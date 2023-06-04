@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33712.159
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoScrapper", "AutoScrapper\AutoScrapper.csproj", "{0564E997-55CB-4B0A-9381-499E96F81DFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0564E997-55CB-4B0A-9381-499E96F81DFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0564E997-55CB-4B0A-9381-499E96F81DFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0564E997-55CB-4B0A-9381-499E96F81DFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0564E997-55CB-4B0A-9381-499E96F81DFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1DF83527-72DC-4E15-8858-4A9A7C03B5C4}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,339 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "CombineTextFilesToWord/1.0.0": {
+        "dependencies": {
+          "DocumentFormat.OpenXml": "2.20.0",
+          "Spire.Doc": "11.4.12",
+          "Spire.PDF": "9.4.12",
+          "Xceed.Document.NET": "2.5.23177.2123",
+          "Xceed.Words.NET": "2.5.23177.2123"
+        },
+        "runtime": {
+          "CombineTextFilesToWord.dll": {}
+        }
+      },
+      "DocumentFormat.OpenXml/2.20.0": {
+        "dependencies": {
+          "System.IO.Packaging": "4.7.0"
+        },
+        "runtime": {
+          "lib/net6.0/DocumentFormat.OpenXml.dll": {
+            "assemblyVersion": "2.20.0.0",
+            "fileVersion": "2.20.0.0"
+          }
+        }
+      },
+      "Microsoft.Win32.SystemEvents/6.0.0": {
+        "runtime": {
+          "lib/net6.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "Spire.Doc/11.4.12": {
+        "dependencies": {
+          "System.Drawing.Common": "6.0.0",
+          "System.Security.Cryptography.Xml": "6.0.0",
+          "System.Security.Permissions": "6.0.0",
+          "System.Text.Encoding.CodePages": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Spire.Doc.dll": {
+            "assemblyVersion": "11.4.12.0",
+            "fileVersion": "11.4.12.3360"
+          },
+          "lib/net6.0/Spire.Pdf.dll": {
+            "assemblyVersion": "9.4.12.0",
+            "fileVersion": "9.4.12.1360"
+          }
+        }
+      },
+      "Spire.PDF/9.4.12": {
+        "dependencies": {
+          "System.Drawing.Common": "6.0.0",
+          "System.Text.Encoding.CodePages": "6.0.0"
+        }
+      },
+      "System.Drawing.Common/6.0.0": {
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/net6.0/System.Drawing.Common.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          },
+          "runtimes/win/lib/net6.0/System.Drawing.Common.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "System.Formats.Asn1/6.0.0": {},
+      "System.IO.Packaging/4.7.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.IO.Packaging.dll": {
+            "assemblyVersion": "4.0.5.0",
+            "fileVersion": "4.700.19.56404"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
+      "System.Security.AccessControl/6.0.0": {},
+      "System.Security.Cryptography.Pkcs/6.0.0": {
+        "dependencies": {
+          "System.Formats.Asn1": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/System.Security.Cryptography.Pkcs.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "System.Security.Cryptography.Xml/6.0.0": {
+        "dependencies": {
+          "System.Security.AccessControl": "6.0.0",
+          "System.Security.Cryptography.Pkcs": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/System.Security.Cryptography.Xml.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "System.Security.Permissions/6.0.0": {
+        "dependencies": {
+          "System.Security.AccessControl": "6.0.0",
+          "System.Windows.Extensions": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/System.Security.Permissions.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "System.Text.Encoding.CodePages/6.0.0": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        }
+      },
+      "System.Windows.Extensions/6.0.0": {
+        "dependencies": {
+          "System.Drawing.Common": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/System.Windows.Extensions.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net6.0/System.Windows.Extensions.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "Xceed.Document.NET/2.5.23177.2123": {
+        "dependencies": {
+          "System.Drawing.Common": "6.0.0",
+          "System.IO.Packaging": "4.7.0",
+          "Xceed.Pdf": "2.5.23177.2123"
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Document.NET5.dll": {
+            "assemblyVersion": "2.5.23177.21230",
+            "fileVersion": "2.5.23177.21230"
+          }
+        }
+      },
+      "Xceed.Pdf/2.5.23177.2123": {
+        "dependencies": {
+          "System.Drawing.Common": "6.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.PDF.NET5.dll": {
+            "assemblyVersion": "2.5.23176.9000",
+            "fileVersion": "2.5.23176.9000"
+          }
+        }
+      },
+      "Xceed.Words.NET/2.5.23177.2123": {
+        "dependencies": {
+          "Xceed.Document.NET": "2.5.23177.2123",
+          "Xceed.Pdf": "2.5.23177.2123"
+        },
+        "runtime": {
+          "lib/net5.0/Xceed.Words.NET5.dll": {
+            "assemblyVersion": "2.5.23177.21230",
+            "fileVersion": "2.5.23177.21230"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CombineTextFilesToWord/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DocumentFormat.OpenXml/2.20.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+oFMsEppo/W6KpGTRXaJl2jTFYn9zeon4FaZuDoCijQ1/0JaPENaCef7d4Y3f8v116eKhVBwd4Ya+/NDglxkjw==",
+      "path": "documentformat.openxml/2.20.0",
+      "hashPath": "documentformat.openxml.2.20.0.nupkg.sha512"
+    },
+    "Microsoft.Win32.SystemEvents/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hqTM5628jSsQiv+HGpiq3WKBl2c8v1KZfby2J6Pr7pEPlK9waPdgEO6b8A/+/xn/yZ9ulv8HuqK71ONy2tg67A==",
+      "path": "microsoft.win32.systemevents/6.0.0",
+      "hashPath": "microsoft.win32.systemevents.6.0.0.nupkg.sha512"
+    },
+    "Spire.Doc/11.4.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Hgt7F98O0f0oU87cNdq/001zS6L+YypfHnyHN59nWchdEI5hdOyWs57RsWAoQxDNgAzm4lW3yXgZlP3s6JH5Qg==",
+      "path": "spire.doc/11.4.12",
+      "hashPath": "spire.doc.11.4.12.nupkg.sha512"
+    },
+    "Spire.PDF/9.4.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-b1Ez2kmOHlMdrZZEkUffinLHYHQ5R55E3xU/pihsR/cJkOC+PvuGnI+XzTfUkn3Pr0UqSMw8IFKE1g8+jrRKCg==",
+      "path": "spire.pdf/9.4.12",
+      "hashPath": "spire.pdf.9.4.12.nupkg.sha512"
+    },
+    "System.Drawing.Common/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NfuoKUiP2nUWwKZN6twGqXioIe1zVD0RIj2t976A+czLHr2nY454RwwXs6JU9Htc6mwqL6Dn/nEL3dpVf2jOhg==",
+      "path": "system.drawing.common/6.0.0",
+      "hashPath": "system.drawing.common.6.0.0.nupkg.sha512"
+    },
+    "System.Formats.Asn1/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-T6fD00dQ3NTbPDy31m4eQUwKW84s03z0N2C8HpOklyeaDgaJPa/TexP4/SkORMSOwc7WhKifnA6Ya33AkzmafA==",
+      "path": "system.formats.asn1/6.0.0",
+      "hashPath": "system.formats.asn1.6.0.0.nupkg.sha512"
+    },
+    "System.IO.Packaging/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9VV4KAbgRQZ79iEoG40KIeZy38O30oWwewScAST879+oki8g/Wa2HXZQgrhDDxQM4GkP1PnRJll05NMiVPbYAw==",
+      "path": "system.io.packaging/4.7.0",
+      "hashPath": "system.io.packaging.4.7.0.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    },
+    "System.Security.AccessControl/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AUADIc0LIEQe7MzC+I0cl0rAT8RrTAKFHl53yHjEUzNVIaUlhFY11vc2ebiVJzVBuOzun6F7FBA+8KAbGTTedQ==",
+      "path": "system.security.accesscontrol/6.0.0",
+      "hashPath": "system.security.accesscontrol.6.0.0.nupkg.sha512"
+    },
+    "System.Security.Cryptography.Pkcs/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-elM3x+xSRhzQysiqo85SbidJJ2YbZlnvmh+53TuSZHsD7dNuuEWser+9EFtY+rYupBwkq2avc6ZCO3/6qACgmg==",
+      "path": "system.security.cryptography.pkcs/6.0.0",
+      "hashPath": "system.security.cryptography.pkcs.6.0.0.nupkg.sha512"
+    },
+    "System.Security.Cryptography.Xml/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-puJ4UCh9JVRwOCyCIcq71JY6Axr8Sp8E2GjTIU1Fj8hm4+oX6NEoyGFGa/+pBG8SrVxbQPSj7hvtaREyTHHsmw==",
+      "path": "system.security.cryptography.xml/6.0.0",
+      "hashPath": "system.security.cryptography.xml.6.0.0.nupkg.sha512"
+    },
+    "System.Security.Permissions/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-T/uuc7AklkDoxmcJ7LGkyX1CcSviZuLCa4jg3PekfJ7SU0niF0IVTXwUiNVP9DSpzou2PpxJ+eNY2IfDM90ZCg==",
+      "path": "system.security.permissions/6.0.0",
+      "hashPath": "system.security.permissions.6.0.0.nupkg.sha512"
+    },
+    "System.Text.Encoding.CodePages/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZFCILZuOvtKPauZ/j/swhvw68ZRi9ATCfvGbk1QfydmcXBkIWecWKn/250UH7rahZ5OoDBaiAudJtPvLwzw85A==",
+      "path": "system.text.encoding.codepages/6.0.0",
+      "hashPath": "system.text.encoding.codepages.6.0.0.nupkg.sha512"
+    },
+    "System.Windows.Extensions/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IXoJOXIqc39AIe+CIR7koBtRGMiCt/LPM3lI+PELtDIy9XdyeSrwXFdWV9dzJ2Awl0paLWUaknLxFQ5HpHZUog==",
+      "path": "system.windows.extensions/6.0.0",
+      "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
+    },
+    "Xceed.Document.NET/2.5.23177.2123": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BiOJ/lhwLMeSDuaRF3CqC7RHyRqwO/PAJCmc2G1GLuXhRwJJL3+sJ2+wlHBVOcEcigb0narJAqjF6SpQVUNMHw==",
+      "path": "xceed.document.net/2.5.23177.2123",
+      "hashPath": "xceed.document.net.2.5.23177.2123.nupkg.sha512"
+    },
+    "Xceed.Pdf/2.5.23177.2123": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R3xOeaxYI72Xpx6J7BjHCALjIDRyyXirp+qzm6aLAYkEYRF2zprYCfiZf4yNnIuDV7yWBJWXt+k3Bks0zSD87g==",
+      "path": "xceed.pdf/2.5.23177.2123",
+      "hashPath": "xceed.pdf.2.5.23177.2123.nupkg.sha512"
+    },
+    "Xceed.Words.NET/2.5.23177.2123": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9Jxv6m4n3nFFkxt8qd9YoJDlufQ9uVUFEP/JnKvHcCl1sBPKkqzGDYNsM6qGwVDJ4IYyo+vSET1voUVoUf8+Cw==",
+      "path": "xceed.words.net/2.5.23177.2123",
+      "hashPath": "xceed.words.net.2.5.23177.2123.nupkg.sha512"
+    }
+  }
+}

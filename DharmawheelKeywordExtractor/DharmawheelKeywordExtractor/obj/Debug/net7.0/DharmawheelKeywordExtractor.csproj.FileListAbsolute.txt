@@ -1,0 +1,15 @@
+C:\Users\cyber\source\repos\DharmawheelKeywordExtractor\DharmawheelKeywordExtractor\bin\Debug\net7.0\DharmawheelKeywordExtractor.exe
+C:\Users\cyber\source\repos\DharmawheelKeywordExtractor\DharmawheelKeywordExtractor\bin\Debug\net7.0\DharmawheelKeywordExtractor.deps.json
+C:\Users\cyber\source\repos\DharmawheelKeywordExtractor\DharmawheelKeywordExtractor\bin\Debug\net7.0\DharmawheelKeywordExtractor.runtimeconfig.json
+C:\Users\cyber\source\repos\DharmawheelKeywordExtractor\DharmawheelKeywordExtractor\bin\Debug\net7.0\DharmawheelKeywordExtractor.dll
+C:\Users\cyber\source\repos\DharmawheelKeywordExtractor\DharmawheelKeywordExtractor\bin\Debug\net7.0\DharmawheelKeywordExtractor.pdb
+C:\Users\cyber\source\repos\DharmawheelKeywordExtractor\DharmawheelKeywordExtractor\obj\Debug\net7.0\DharmawheelKeywordExtractor.csproj.AssemblyReference.cache
+C:\Users\cyber\source\repos\DharmawheelKeywordExtractor\DharmawheelKeywordExtractor\obj\Debug\net7.0\DharmawheelKeywordExtractor.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cyber\source\repos\DharmawheelKeywordExtractor\DharmawheelKeywordExtractor\obj\Debug\net7.0\DharmawheelKeywordExtractor.AssemblyInfoInputs.cache
+C:\Users\cyber\source\repos\DharmawheelKeywordExtractor\DharmawheelKeywordExtractor\obj\Debug\net7.0\DharmawheelKeywordExtractor.AssemblyInfo.cs
+C:\Users\cyber\source\repos\DharmawheelKeywordExtractor\DharmawheelKeywordExtractor\obj\Debug\net7.0\DharmawheelKeywordExtractor.csproj.CoreCompileInputs.cache
+C:\Users\cyber\source\repos\DharmawheelKeywordExtractor\DharmawheelKeywordExtractor\obj\Debug\net7.0\DharmawheelKeywordExtractor.dll
+C:\Users\cyber\source\repos\DharmawheelKeywordExtractor\DharmawheelKeywordExtractor\obj\Debug\net7.0\refint\DharmawheelKeywordExtractor.dll
+C:\Users\cyber\source\repos\DharmawheelKeywordExtractor\DharmawheelKeywordExtractor\obj\Debug\net7.0\DharmawheelKeywordExtractor.pdb
+C:\Users\cyber\source\repos\DharmawheelKeywordExtractor\DharmawheelKeywordExtractor\obj\Debug\net7.0\DharmawheelKeywordExtractor.genruntimeconfig.cache
+C:\Users\cyber\source\repos\DharmawheelKeywordExtractor\DharmawheelKeywordExtractor\obj\Debug\net7.0\ref\DharmawheelKeywordExtractor.dll

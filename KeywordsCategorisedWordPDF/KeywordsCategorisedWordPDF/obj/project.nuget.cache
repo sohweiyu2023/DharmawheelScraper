@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "9CjqviiW/l/qtRTCcPJXHnMV2k2dysXnXEK3tgOuvwOTjDO2AfmW37g7S+PFRDBpcKltCBLePDFWfrXnlnG4aw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\cyber\\source\\repos\\KeywordsCategorisedWordPDF\\KeywordsCategorisedWordPDF\\KeywordsCategorisedWordPDF.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\cyber\\.nuget\\packages\\documentformat.openxml\\2.20.0\\documentformat.openxml.2.20.0.nupkg.sha512",
+    "C:\\Users\\cyber\\.nuget\\packages\\system.io.packaging\\4.7.0\\system.io.packaging.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

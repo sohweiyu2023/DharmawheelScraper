@@ -1,0 +1,37 @@
+Steps: 
+
+1) Use Dharmawheel Scrapper to get all posts from Dharmawheel
+2) Use CombineTextFilesToWord to convert scrapper-produced text files into Word and PDF files
+3) Use Dharmawheel Table of Contents Creator to create table of contents for PDF files
+4) Use DharmawheelKeywordExtractor to generate keywords
+5) Use KeywordsCategorisedWordPDF to generate word and pdf documents based on keywords
+
+OR, just:
+
+1) Set up AutoScrapper to set up a scheduled task that run steps 1 to 5 automatically every week, and automatically upload to my Box.com account. 
+
+Make sure to edit AutoScrapper.dll.config to ensure all file locations are correct after zip extraction.
+
+Then, edit the three scripts in AutoScrapper\ to make sure the directories are correct.
+
+Finally, run CreateScheduledTask.bat.
+
+
+....
+
+
+DharmawheelScraper is designed to scrape posts from the DharmaWheel.net forum, specifically from the user specified as "Malcolm" and others. It will gather all the posts from this user and save them into text files in your computer. The program supports incremental updates, meaning it can scrape only the latest posts since the last scraping operation.
+
+The Table of Contents Generator Program is a tool designed to process PDF documents and automatically generate a table of contents (TOC) based on the titles in each document. Each entry in the TOC includes the title and the corresponding page number(s). The TOC for each processed document is saved as a separate PDF file.
+
+CombineTextFilesToWord is designed to combine multiple text files containing forum posts into a single Word document (.docx) and PDF file. The program can process a single folder or multiple subfolders, and you can choose to sort the files in ascending or descending order.
+ 
+DharmawheelKeywordExtractor and KeywordsCategorisedWordPDF are two console-based applications designed to work together to streamline the process of organizing and analyzing text data.
+
+Firstly, DharmawheelKeywordExtractor is responsible for identifying and quantifying the presence of certain keywords within a collection of text files. It takes a file with specified keywords and their possible synonyms, then examines the text files in a user-defined directory to track the frequency of these keywords and their synonyms. The result of this process is a dataset highlighting the occurrence count of each keyword.
+
+Following this, the KeywordsCategorisedWordPDF application comes into play. This program takes the output of the DharmawheelKeywordExtractor - the keywords - and further categorizes the text data from the specified directory according to these keywords. It then compiles these categorized posts into Microsoft Word and PDF documents. By doing this, KeywordsCategorisedWordPDF enhances data organization and simplifies the task of reviewing a significant volume of text data. Each output file generated contains posts that are sorted by date and grouped according to their associated keyword or synonyms.
+
+AutoScrapper is a powerful automation tool designed to streamline and simplify the execution of multiple console applications for scrapping the posts of Dharmawheel.net user(s). It facilitates the running of designated console programs, captures and labels their outputs for easy monitoring, and provides automated responses to their prompts. Configurable via a settings file, AutoScrapper can be set up to execute a variety of tasks based on specific requirements. Its integration with Windows Task Scheduler via batch scripts also enables routine automated operations, making it an invaluable tool for efficient system management and data processing.
+
+AutoScrapper allows me to re-generate all the users' posts weekly based on latest updates, which I will upload to Box.com. 

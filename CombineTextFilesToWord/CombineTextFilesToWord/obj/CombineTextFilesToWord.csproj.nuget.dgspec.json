@@ -1,0 +1,89 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\cyber\\source\\repos\\CombineTextFilesToWord\\CombineTextFilesToWord\\CombineTextFilesToWord.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\cyber\\source\\repos\\CombineTextFilesToWord\\CombineTextFilesToWord\\CombineTextFilesToWord.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\cyber\\source\\repos\\CombineTextFilesToWord\\CombineTextFilesToWord\\CombineTextFilesToWord.csproj",
+        "projectName": "CombineTextFilesToWord",
+        "projectPath": "C:\\Users\\cyber\\source\\repos\\CombineTextFilesToWord\\CombineTextFilesToWord\\CombineTextFilesToWord.csproj",
+        "packagesPath": "C:\\Users\\cyber\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\cyber\\source\\repos\\CombineTextFilesToWord\\CombineTextFilesToWord\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\cyber\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "DocumentFormat.OpenXml": {
+              "target": "Package",
+              "version": "[2.20.0, )"
+            },
+            "Spire.Doc": {
+              "target": "Package",
+              "version": "[11.4.12, )"
+            },
+            "Spire.PDF": {
+              "target": "Package",
+              "version": "[9.4.12, )"
+            },
+            "Xceed.Document.NET": {
+              "target": "Package",
+              "version": "[2.5.23177.2123, )"
+            },
+            "Xceed.Words.NET": {
+              "target": "Package",
+              "version": "[2.5.23177.2123, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
