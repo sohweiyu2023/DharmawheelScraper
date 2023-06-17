@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -10,8 +11,12 @@ using AngleSharp;
 using AngleSharp.Dom;
 using AngleSharp.Html.Parser;
 using Flurl;
+using HtmlAgilityPack;
 using RestSharp;
 using static System.Net.Mime.MediaTypeNames;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 
 namespace ConsoleApp
 {
@@ -24,10 +29,12 @@ namespace ConsoleApp
         private static int FileCounter = 1;
         private static readonly List<string> CollectedPosts = new List<string>();
         private static readonly HashSet<string> SeenPostDatetimes = new HashSet<string>();
-         
+
         private static readonly HashSet<string> ScrapedPostsUrls = new HashSet<string>();
 
         public static int TotalPosts = 0;/* Retrieve this number from the author's profile page. */
+
+        private static readonly RestClient client = new RestClient();
 
         static async Task Main(string[] args)
         {
@@ -41,10 +48,7 @@ namespace ConsoleApp
                 var files = Directory.GetFiles(Directory.GetCurrentDirectory(), $"{AuthorName}_posts_*.txt");
                 if (files.Length > 0)
                 {
-                    var latestFile = files
-                        .OrderByDescending(f => File.GetLastWriteTime(f))
-                        .First();
-
+                    var latestFile = files.OrderByDescending(f => File.GetLastWriteTime(f)).First();
                     var firstEntry = File.ReadLines(latestFile).Take(4).ToList();
                     if (firstEntry.Count >= 2)
                     {
@@ -56,153 +60,186 @@ namespace ConsoleApp
                             Console.WriteLine("Stop date: " + stopDate);
                         }
                     }
-
-
                 }
             }
 
-            var config = Configuration.Default.WithDefaultLoader();
-            var context = BrowsingContext.New(config);
+            var options = new ChromeOptions();
+            // Uncomment below line to run Chrome in headless mode
+            // options.AddArgument("--headless");
 
-            var documentX = await context.OpenAsync($"{BaseUrl}/ucp.php?mode=login");
-            var sid = documentX.QuerySelector("input[name='sid']").GetAttribute("value");
-            var creationTime = documentX.QuerySelector("input[name='creation_time']").GetAttribute("value");
-            var formToken = documentX.QuerySelector("input[name='form_token']").GetAttribute("value");
+            using var driver = new ChromeDriver(options);
 
-            var loginData = new
-            {
-                username = "enter your dharmawheel username",
-                password = "enter your dharmawheel password",
-                redirect = "index.php",
-                sid = sid,
-                creation_time = creationTime,
-                form_token = formToken
-            };
+            driver.Navigate().GoToUrl("https://www.dharmawheel.net/ucp.php?mode=login");
 
-            using var client = CreateRestClient($"{BaseUrl}/ucp.php?mode=login");
-            var request = new RestRequest("/ucp.php?mode=login", Method.Post);
-            request.AddObject(loginData);
-            await client.ExecuteAsync(request);
+            var usernameInput = driver.FindElement(By.Name("username"));
+            var passwordInput = driver.FindElement(By.Name("password"));
+            var submitButton = driver.FindElement(By.Name("login"));
 
+            /*Please be aware that with new accounts on the Dharmawheel platform such as "nyingje", 
+             * there may be limitations on scraping the most recent posts from the same day. 
+             * This limitation seems to be tied to the age and activity level of the account used for scraping. 
+             * It appears that the platform places restrictions on viewing same-day posts for newer accounts, 
+             * possibly to limit automated activity or to encourage engagement with the community. 
+             * As such, you may only be able to scrape posts from previous days with a new account. 
+             * If you need to scrape posts from the same day, 
+             * you may need to use an older account that has some level of activity. 
+             * Please make sure to respect the platform's guidelines and terms of use when using this scraping tool."
+             * */
 
-            Console.WriteLine("Log in may have failed. Get response from client.ExecuteAsync(request) for more details.");
+            usernameInput.SendKeys("nyingje");
+            passwordInput.SendKeys("kila8118");
+            submitButton.Click();
 
-
-
+            // Now you are logged in, navigate to the page you want to scrape
+            driver.Navigate().GoToUrl("https://www.dharmawheel.net/index.php");
             while (true)
-            { 
-
-
+            {
                 var url = $"{BaseUrl}/search.php?st=0&sk=t&sd=d&sr=posts&author_id={AuthorId}&start={CurrentPage * 20}";
                 Console.WriteLine($"Fetching page {CurrentPage}: {url}");
-                var document = await context.OpenAsync(url);
-                var results = document.QuerySelectorAll("[class^='search post']");
 
-                if (results.Length == 0)
+                driver.Navigate().GoToUrl(url);
+                var results = driver.FindElements(By.CssSelector("[class^='search post']"));
+
+                if (results.Count == 0)
                 {
                     Console.WriteLine("No more posts found");
                     break;
                 }
 
-                foreach (var result in results)
+                int resultsCount = results.Count;
+
+                for (int i = 0; i < resultsCount; i++)
                 {
-                    var postLink = result.QuerySelector("h3 a").GetAttribute("href");
-
-                    // Skip this post if we have already scraped it
-                    if (ScrapedPostsUrls.Contains(postLink))
+                    try
                     {
-                        Console.WriteLine("Encountered previously scraped post, stopping");
+                        // Refresh the "results" after navigating back from the post page
+                        results = driver.FindElements(By.CssSelector("[class^='search post']"));
+                        var result = results[i];
 
-                        if (CollectedPosts.Count > 0)
-                            SaveToFileAllPosts(CollectedPosts, FileCounter);
-                        else
-                            Console.WriteLine("0 collected posts written.");
+                        /*var postLinkElementBy = By.CssSelector("h3 a");
+                        var postLinkElement = driver.RetryAction(postLinkElementBy);
+                        var postLink = postLinkElement.GetAttribute("href");*/
 
-                        return;
-                    }
+            var postLinkElementBy = By.CssSelector("h3 a");
+                        // Search within the result element, not the whole driver
 
-                    ScrapedPostsUrls.Add(postLink);
-
-
-                    var author = result.QuerySelector("a.username").TextContent.Trim();
-                    var postTime = DateTime.ParseExact(result.QuerySelector("dd.search-result-date").TextContent.Trim(), "ddd MMM d, yyyy h:mm tt", CultureInfo.InvariantCulture);
+                        var postLinkElement = result.FindElement(postLinkElementBy);
 
 
-                    if (stopDate.HasValue && postTime <= stopDate.Value)
-                    {
-                        Console.WriteLine("Reached previously scraped post, stopping");
-
-                        if (CollectedPosts.Count > 0)
-                            SaveToFileLatestPosts(CollectedPosts);
-                        else
-                            Console.WriteLine("0 collected posts written.");
-
-                        return;
-                    }
+                        var postLink = postLinkElement.GetAttribute("href");
 
 
-                    var postTitle = result.QuerySelector("h3").TextContent.Trim();
-                    //var postLink = result.QuerySelector("h3 a").GetAttribute("href");
-                    var postId = postLink.Split('#')[1].Substring(1);
-                    var postPageRequest = new RestRequest(postLink.Substring(1), Method.Get);
-                    var postPageResponse = client.Execute(postPageRequest);
-
-                    var postPageParser = new HtmlParser();
-                    var postPage = await postPageParser.ParseDocumentAsync(postPageResponse.Content);
-
-                    var correctPost = GetCorrectPost(postPage, $"p{postId}");
-
-                    if (TotalPosts == 0)
-                    {
-
-                        string pattern = @"<dd class=""profile-posts""><strong>Posts:</strong> <a href="".*?"">(\d+)</a></dd>";
-                        Match match = Regex.Match(correctPost.InnerHtml, pattern);
-                        if (match.Success)
+                        // Skip this post if we have already scraped it
+                        if (ScrapedPostsUrls.Contains(postLink))
                         {
-                            string posts = match.Groups[1].Value;
-                            Console.WriteLine("Total number of user's posts: " + posts);
-                            TotalPosts = Convert.ToInt32(posts);
+                            Console.WriteLine("Encountered previously scraped post, stopping");
+
+                            if (CollectedPosts.Count > 0)
+                                SaveToFileAllPosts(CollectedPosts, FileCounter);
+                            else
+                                Console.WriteLine("0 collected posts written.");
+
+                            return;
                         }
+
+                        ScrapedPostsUrls.Add(postLink);
+
+                        var author = result.FindElement(By.CssSelector("a.username")).Text.Trim();
+                        var postTime = DateTime.ParseExact(result.FindElement(By.CssSelector("dd.search-result-date")).Text.Trim(), "ddd MMM d, yyyy h:mm tt", CultureInfo.InvariantCulture);
+
+                        if (stopDate.HasValue && postTime <= stopDate.Value)
+                        {
+                            Console.WriteLine("Reached previously scraped post, stopping");
+
+                            if (CollectedPosts.Count > 0)
+                                SaveToFileLatestPosts(CollectedPosts);
+                            else
+                                Console.WriteLine("0 collected posts written.");
+
+                            return;
+                        }
+
+                        var postTitle = result.FindElement(By.CssSelector("h3")).Text.Trim();
+                        //var postLink = result.QuerySelector("h3 a").GetAttribute("href");
+                        var postId = postLink.Split('#')[1].Substring(1);
+                        //var postPageRequest = new RestRequest(postLink.Substring(1), Method.Get);
+                        //var postPageRequest = new RestRequest($"{BaseUrl}/{postLink}", Method.Get);
+
+                        /*var postPageResponse = await client.ExecuteAsync(postPageRequest);
+
+
+                        var postPageParser = new HtmlParser();
+                        var postPage = await postPageParser.ParseDocumentAsync(postPageResponse.Content);*/
+
+                        driver.Navigate().GoToUrl($"{postLink}");
+                        var postPageHtml = driver.PageSource;
+
+                        var postPageParser = new HtmlParser();
+                        var postPage = await postPageParser.ParseDocumentAsync(postPageHtml);
+
+                        var correctPost = GetCorrectPost(postPage, $"p{postId}");
+
+                        if (correctPost == null)
+                        {
+                            Console.WriteLine($"Error fetching post page: Could not find post with ID {postId}");
+                            continue;
+                        }
+
+
+                        if (TotalPosts == 0)
+                        {
+
+                            string pattern = @"<dd class=""profile-posts""><strong>Posts:</strong> <a href="".*?"">(\d+)</a></dd>";
+                            Match match = Regex.Match(correctPost.InnerHtml, pattern);
+                            if (match.Success)
+                            {
+                                string posts = match.Groups[1].Value;
+                                Console.WriteLine("Total number of user's posts: " + posts);
+                                TotalPosts = Convert.ToInt32(posts);
+                            }
+                        }
+
+                        var postContent = FormatPostContent(correctPost);
+
+
+                        var postTimeStr = postTime.ToString("ddd MMM d, yyyy h:mm tt");
+
+                        if (CollectedPosts.Count > TotalPosts && SeenPostDatetimes.Contains(postTimeStr))
+                        {
+                            Console.WriteLine("Encountered duplicate post datetime after exceeding total post count, stopping");
+
+                            if (CollectedPosts.Count > 0)
+                                SaveToFileLatestPosts(CollectedPosts);
+                            else
+                                Console.WriteLine("0 collected posts written.");
+
+                            return;
+                        }
+
+                        SeenPostDatetimes.Add(postTimeStr);
+
+                        var postEntry = $"Author: {author}\nDate: {postTimeStr}\nTitle: {postTitle}\nContent:\n{postContent}\n";
+                        CollectedPosts.Add(postEntry);
+                        Console.WriteLine($"Collecting post {CollectedPosts.Count}");
+
+                        if (CollectedPosts.Count >= 500)
+                        {
+                            SaveToFileAllPosts(CollectedPosts, FileCounter);
+                            CollectedPosts.Clear();
+                            FileCounter++;
+                        }
+
+                        // After processing each post, navigate back to the results page:
+                        driver.Navigate().Back();
+                        // Wait for the page to load
+                        await Task.Delay(TimeSpan.FromSeconds(2));
                     }
-
-                    var postContent = FormatPostContent(correctPost);
-
-                    if (!postPageResponse.IsSuccessStatusCode)
+                    catch (StaleElementReferenceException)
                     {
-                        Console.WriteLine($"Error fetching post page: {postPageResponse.StatusCode}");
+                        Console.WriteLine("Stale element reference error. Skipping to next post.");
                         continue;
                     }
-
-                    var postTimeStr = postTime.ToString("ddd MMM d, yyyy h:mm tt");
-
-                    if (CollectedPosts.Count > TotalPosts && SeenPostDatetimes.Contains(postTimeStr))
-                    {
-                        Console.WriteLine("Encountered duplicate post datetime after exceeding total post count, stopping");
-
-                        if (CollectedPosts.Count > 0)
-                            SaveToFileLatestPosts(CollectedPosts);
-                        else
-                            Console.WriteLine("0 collected posts written.");
-
-                        return;
-                    }
-
-                    SeenPostDatetimes.Add(postTimeStr);
-
-                    var postEntry = $"Author: {author}\nDate: {postTimeStr}\nTitle: {postTitle}\nContent:\n{postContent}\n";
-                    CollectedPosts.Add(postEntry);
-                    Console.WriteLine($"Collecting post {CollectedPosts.Count}");
-
-                    if (CollectedPosts.Count >= 500)
-                    {
-                        SaveToFileAllPosts(CollectedPosts, FileCounter);
-                        CollectedPosts.Clear();
-                        FileCounter++;
-                    }
                 }
-
-
-                await Task.Delay(TimeSpan.FromSeconds(2));
 
                 CurrentPage++;
             }
@@ -219,7 +256,37 @@ namespace ConsoleApp
                 }
             }
         }
-         
+        private static async Task LoginToWebsite(RestClient client)
+        {
+            var loginPageRequest = new RestRequest($"{BaseUrl}/ucp.php?mode=login", Method.Get);
+            var loginPageResponse = await client.ExecuteAsync(loginPageRequest);
+            var loginPageContent = loginPageResponse.Content;
+
+            var doc = new HtmlDocument();
+            doc.LoadHtml(loginPageContent);
+            var sid = doc.GetElementbyId("sid").GetAttributeValue("value", "");
+            var creationTime = doc.GetElementbyId("creation_time").GetAttributeValue("value", "");
+            var formToken = doc.GetElementbyId("form_token").GetAttributeValue("value", "");
+
+            var loginRequest = new RestRequest("ucp.php?mode=login", Method.Post);
+            loginRequest.AddParameter("username", "nyingje", ParameterType.GetOrPost);
+            loginRequest.AddParameter("password", "kila8118", ParameterType.GetOrPost);
+            loginRequest.AddParameter("redirect", "./ucp.php?mode=login&redirect=index.php", ParameterType.GetOrPost);
+            loginRequest.AddParameter("creation_time", creationTime, ParameterType.GetOrPost);
+            loginRequest.AddParameter("form_token", formToken, ParameterType.GetOrPost);
+            loginRequest.AddParameter("sid", sid, ParameterType.GetOrPost);
+            loginRequest.AddParameter("login", "Login", ParameterType.GetOrPost);
+
+            loginRequest.AddHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36");
+            loginRequest.AddHeader("Origin", "https://www.dharmawheel.net");
+            loginRequest.AddHeader("Referer", "https://www.dharmawheel.net/ucp.php?mode=login&redirect=index.php");
+
+            var loginResponse = await client.ExecuteAsync(loginRequest);
+            var loginResponseContent = loginResponse.Content;
+
+            Console.WriteLine($"Response Status Code: {loginResponse.StatusCode}");
+            Console.WriteLine($"Response Content: {loginResponseContent}");
+        }
 
         private static IElement GetCorrectPost(IDocument postPage, string postId)
         {
@@ -351,3 +418,31 @@ namespace ConsoleApp
 
     }
 }
+
+public static class WebDriverExtensions
+{
+    public static IWebElement WaitUntilVisible(this IWebDriver driver, By by, int timeout = 10)
+    {
+        var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeout));
+        return wait.Until(drv => drv.FindElement(by));
+    }
+
+    public static IWebElement RetryAction(this IWebDriver driver, By by, int maxRetryCount = 3)
+    {
+        for (int attempt = 0; attempt < maxRetryCount; attempt++)
+        {
+            try
+            {
+                // Try to perform the operation
+                return driver.FindElement(by);
+            }
+            catch (StaleElementReferenceException)
+            {
+                if (attempt == maxRetryCount - 1) throw; // Rethrow the exception if we've reached max retries
+            }
+        }
+        throw new Exception("An unexpected error occurred in the RetryAction method.");
+    }
+}
+
+
