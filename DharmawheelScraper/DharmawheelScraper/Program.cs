@@ -116,11 +116,7 @@ namespace ConsoleApp
                         results = driver.FindElements(By.CssSelector("[class^='search post']"));
                         var result = results[i];
 
-                        /*var postLinkElementBy = By.CssSelector("h3 a");
-                        var postLinkElement = driver.RetryAction(postLinkElementBy);
-                        var postLink = postLinkElement.GetAttribute("href");*/
-
-            var postLinkElementBy = By.CssSelector("h3 a");
+                        var postLinkElementBy = By.CssSelector("h3 a");
                         // Search within the result element, not the whole driver
 
                         var postLinkElement = result.FindElement(postLinkElementBy);
@@ -160,16 +156,8 @@ namespace ConsoleApp
                         }
 
                         var postTitle = result.FindElement(By.CssSelector("h3")).Text.Trim();
-                        //var postLink = result.QuerySelector("h3 a").GetAttribute("href");
+
                         var postId = postLink.Split('#')[1].Substring(1);
-                        //var postPageRequest = new RestRequest(postLink.Substring(1), Method.Get);
-                        //var postPageRequest = new RestRequest($"{BaseUrl}/{postLink}", Method.Get);
-
-                        /*var postPageResponse = await client.ExecuteAsync(postPageRequest);
-
-
-                        var postPageParser = new HtmlParser();
-                        var postPage = await postPageParser.ParseDocumentAsync(postPageResponse.Content);*/
 
                         driver.Navigate().GoToUrl($"{postLink}");
                         var postPageHtml = driver.PageSource;
