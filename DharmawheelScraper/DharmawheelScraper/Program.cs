@@ -126,7 +126,7 @@ namespace ConsoleApp
 
 
                         // Skip this post if we have already scraped it
-                        if (ScrapedPostsUrls.Contains(postLink))
+                        if (CollectedPosts.Count > TotalPosts && ScrapedPostsUrls.Contains(postLink))
                         {
                             Console.WriteLine("Encountered previously scraped post, stopping");
 
@@ -137,6 +137,11 @@ namespace ConsoleApp
 
                             return;
                         }
+                        else if (CollectedPosts.Count <= TotalPosts && ScrapedPostsUrls.Contains(postLink))
+                        {
+                            continue;
+                        }
+
 
                         ScrapedPostsUrls.Add(postLink);
 
