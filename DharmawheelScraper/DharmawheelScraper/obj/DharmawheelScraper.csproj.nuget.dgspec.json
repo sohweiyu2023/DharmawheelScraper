@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cyber\\OneDrive\\Documents\\GitHub\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper.csproj": {}
+    "C:\\Users\\cyber\\source\\repos\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cyber\\OneDrive\\Documents\\GitHub\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper.csproj": {
+    "C:\\Users\\cyber\\source\\repos\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cyber\\OneDrive\\Documents\\GitHub\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper.csproj",
+        "projectUniqueName": "C:\\Users\\cyber\\source\\repos\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper.csproj",
         "projectName": "DharmawheelScraper",
-        "projectPath": "C:\\Users\\cyber\\OneDrive\\Documents\\GitHub\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper.csproj",
+        "projectPath": "C:\\Users\\cyber\\source\\repos\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper.csproj",
         "packagesPath": "C:\\Users\\cyber\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cyber\\OneDrive\\Documents\\GitHub\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper\\obj\\",
+        "outputPath": "C:\\Users\\cyber\\source\\repos\\DharmawheelScraper\\DharmawheelScraper\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -58,7 +58,7 @@
             },
             "HtmlAgilityPack": {
               "target": "Package",
-              "version": "[1.11.48, )"
+              "version": "[1.11.51, )"
             },
             "RestSharp": {
               "target": "Package",
@@ -66,11 +66,11 @@
             },
             "Selenium.Support": {
               "target": "Package",
-              "version": "[4.10.0, )"
+              "version": "[4.11.0, )"
             },
             "Selenium.WebDriver": {
               "target": "Package",
-              "version": "[4.10.0, )"
+              "version": "[4.11.0, )"
             }
           },
           "imports": [
@@ -89,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }

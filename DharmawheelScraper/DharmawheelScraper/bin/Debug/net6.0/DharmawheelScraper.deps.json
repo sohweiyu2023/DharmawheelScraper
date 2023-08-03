@@ -11,10 +11,10 @@
           "AngleSharp": "1.0.4",
           "AngleSharp.Io": "1.0.0",
           "Flurl": "3.0.7",
-          "HtmlAgilityPack": "1.11.48",
+          "HtmlAgilityPack": "1.11.51",
           "RestSharp": "110.2.0",
-          "Selenium.Support": "4.10.0",
-          "Selenium.WebDriver": "4.10.0"
+          "Selenium.Support": "4.11.0",
+          "Selenium.WebDriver": "4.11.0"
         },
         "runtime": {
           "DharmawheelScraper.dll": {}
@@ -50,11 +50,11 @@
           }
         }
       },
-      "HtmlAgilityPack/1.11.48": {
+      "HtmlAgilityPack/1.11.51": {
         "runtime": {
           "lib/netstandard2.0/HtmlAgilityPack.dll": {
-            "assemblyVersion": "1.11.48.0",
-            "fileVersion": "1.11.48.0"
+            "assemblyVersion": "1.11.51.0",
+            "fileVersion": "1.11.51.0"
           }
         }
       },
@@ -77,9 +77,9 @@
           }
         }
       },
-      "Selenium.Support/4.10.0": {
+      "Selenium.Support/4.11.0": {
         "dependencies": {
-          "Selenium.WebDriver": "4.10.0"
+          "Selenium.WebDriver": "4.11.0"
         },
         "runtime": {
           "lib/net6.0/WebDriver.Support.dll": {
@@ -88,7 +88,7 @@
           }
         }
       },
-      "Selenium.WebDriver/4.10.0": {
+      "Selenium.WebDriver/4.11.0": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.1"
         },
@@ -165,12 +165,12 @@
       "path": "flurl/3.0.7",
       "hashPath": "flurl.3.0.7.nupkg.sha512"
     },
-    "HtmlAgilityPack/1.11.48": {
+    "HtmlAgilityPack/1.11.51": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-BTYfqMoTtnlUz5hqJZ3qxh/SDWMtJAulcz2vIr2TRj5BhfdJZD1E1HSpNI9rvIQiYJzl2xoVtCNzCcANjzbScQ==",
-      "path": "htmlagilitypack/1.11.48",
-      "hashPath": "htmlagilitypack.1.11.48.nupkg.sha512"
+      "sha512": "sha512-yRn0Vd6Smu69xGyRWIZVl/Ley2OMMCMwC9tZRR/GdXfxGYj1sGMT4KskWd8OP9dGlqaXPkyB0NzBHKejtZdbow==",
+      "path": "htmlagilitypack/1.11.51",
+      "hashPath": "htmlagilitypack.1.11.51.nupkg.sha512"
     },
     "Newtonsoft.Json/13.0.1": {
       "type": "package",
@@ -186,19 +186,19 @@
       "path": "restsharp/110.2.0",
       "hashPath": "restsharp.110.2.0.nupkg.sha512"
     },
-    "Selenium.Support/4.10.0": {
+    "Selenium.Support/4.11.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-S/7nH+SMiCaut5C6kmMVxq4mCcmvwboPvPqdpx2/Dfwi2O9bFQb+psJC4ZcpvPMg7FCnrC1i6uZW6rthjSo1TQ==",
-      "path": "selenium.support/4.10.0",
-      "hashPath": "selenium.support.4.10.0.nupkg.sha512"
+      "sha512": "sha512-PR7ssrG9peQ5AqPSNvOJ846FFOX1wSv5eV3/8zvYwf0jhNx2bEprBZbtYMSWtht+HXtC5xb6atRQLlpKD+FETQ==",
+      "path": "selenium.support/4.11.0",
+      "hashPath": "selenium.support.4.11.0.nupkg.sha512"
     },
-    "Selenium.WebDriver/4.10.0": {
+    "Selenium.WebDriver/4.11.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-MvgUaxeLqLOtRnNS+kHzqfOhLO+7ZEukhQMuS7ksQQPA2tGNXWhrRN3PTkTGuKhuodd9JkoZ4eCKVEQF6xPdmA==",
-      "path": "selenium.webdriver/4.10.0",
-      "hashPath": "selenium.webdriver.4.10.0.nupkg.sha512"
+      "sha512": "sha512-V8o+Nvi9/3Ix12ZzMGg+fI7sfu+HrflZkMGq8Orr+j0INbfpEEyM6KR9oaaHlm0WUXcn7dTYwyWrJxYsi6eniw==",
+      "path": "selenium.webdriver/4.11.0",
+      "hashPath": "selenium.webdriver.4.11.0.nupkg.sha512"
     },
     "System.Runtime.CompilerServices.Unsafe/6.0.0": {
       "type": "package",

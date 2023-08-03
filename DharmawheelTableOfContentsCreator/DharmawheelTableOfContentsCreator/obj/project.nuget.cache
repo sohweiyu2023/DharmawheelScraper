@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "uWCKkp2w5w3vIKepaAKWF72k3Iw97MQyHrHJuJjlypbp9ZAvP0Ty6sEnuGkQv0xwBDyaqonVfs3XRqFu7DJk0A==",
+  "dgSpecHash": "kKD4zf5C7UjHHQ0LjU3dv54E/MAbdbsJ2yk/FHR+CrHXlSSB0pmi3OtiHo+P2x4nr+4fZivLgBIXOoUGlMRWjw==",
   "success": true,
   "projectFilePath": "C:\\Users\\cyber\\source\\repos\\DharmawheelTableOfContentsCreator\\DharmawheelTableOfContentsCreator\\DharmawheelTableOfContentsCreator.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\cyber\\.nuget\\packages\\itext7\\8.0.0\\itext7.8.0.0.nupkg.sha512",
-    "C:\\Users\\cyber\\.nuget\\packages\\itext7.bouncy-castle-adapter\\8.0.0\\itext7.bouncy-castle-adapter.8.0.0.nupkg.sha512",
-    "C:\\Users\\cyber\\.nuget\\packages\\itext7.commons\\8.0.0\\itext7.commons.8.0.0.nupkg.sha512",
+    "C:\\Users\\cyber\\.nuget\\packages\\itext\\8.0.1\\itext.8.0.1.nupkg.sha512",
+    "C:\\Users\\cyber\\.nuget\\packages\\itext.bouncy-castle-adapter\\8.0.1\\itext.bouncy-castle-adapter.8.0.1.nupkg.sha512",
+    "C:\\Users\\cyber\\.nuget\\packages\\itext.commons\\8.0.1\\itext.commons.8.0.1.nupkg.sha512",
+    "C:\\Users\\cyber\\.nuget\\packages\\itext7\\8.0.1\\itext7.8.0.1.nupkg.sha512",
+    "C:\\Users\\cyber\\.nuget\\packages\\itext7.bouncy-castle-adapter\\8.0.1\\itext7.bouncy-castle-adapter.8.0.1.nupkg.sha512",
     "C:\\Users\\cyber\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\1.1.0\\microsoft.dotnet.platformabstractions.1.1.0.nupkg.sha512",
     "C:\\Users\\cyber\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.0\\microsoft.extensions.dependencyinjection.5.0.0.nupkg.sha512",
     "C:\\Users\\cyber\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",

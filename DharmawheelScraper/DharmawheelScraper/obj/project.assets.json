@@ -47,7 +47,7 @@
           }
         }
       },
-      "HtmlAgilityPack/1.11.48": {
+      "HtmlAgilityPack/1.11.51": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/HtmlAgilityPack.dll": {
@@ -89,10 +89,10 @@
           }
         }
       },
-      "Selenium.Support/4.10.0": {
+      "Selenium.Support/4.11.0": {
         "type": "package",
         "dependencies": {
-          "Selenium.WebDriver": "4.10.0"
+          "Selenium.WebDriver": "4.11.0"
         },
         "compile": {
           "lib/net6.0/WebDriver.Support.dll": {}
@@ -101,7 +101,7 @@
           "lib/net6.0/WebDriver.Support.dll": {}
         }
       },
-      "Selenium.WebDriver/4.10.0": {
+      "Selenium.WebDriver/4.11.0": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1"
@@ -269,14 +269,14 @@
         "lib/netstandard2.0/Flurl.xml"
       ]
     },
-    "HtmlAgilityPack/1.11.48": {
-      "sha512": "BTYfqMoTtnlUz5hqJZ3qxh/SDWMtJAulcz2vIr2TRj5BhfdJZD1E1HSpNI9rvIQiYJzl2xoVtCNzCcANjzbScQ==",
+    "HtmlAgilityPack/1.11.51": {
+      "sha512": "yRn0Vd6Smu69xGyRWIZVl/Ley2OMMCMwC9tZRR/GdXfxGYj1sGMT4KskWd8OP9dGlqaXPkyB0NzBHKejtZdbow==",
       "type": "package",
-      "path": "htmlagilitypack/1.11.48",
+      "path": "htmlagilitypack/1.11.51",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "htmlagilitypack.1.11.48.nupkg.sha512",
+        "htmlagilitypack.1.11.51.nupkg.sha512",
         "htmlagilitypack.nuspec",
         "lib/Net35/HtmlAgilityPack.dll",
         "lib/Net35/HtmlAgilityPack.pdb",
@@ -364,10 +364,10 @@
         "restsharp.png"
       ]
     },
-    "Selenium.Support/4.10.0": {
-      "sha512": "S/7nH+SMiCaut5C6kmMVxq4mCcmvwboPvPqdpx2/Dfwi2O9bFQb+psJC4ZcpvPMg7FCnrC1i6uZW6rthjSo1TQ==",
+    "Selenium.Support/4.11.0": {
+      "sha512": "PR7ssrG9peQ5AqPSNvOJ846FFOX1wSv5eV3/8zvYwf0jhNx2bEprBZbtYMSWtht+HXtC5xb6atRQLlpKD+FETQ==",
       "type": "package",
-      "path": "selenium.support/4.10.0",
+      "path": "selenium.support/4.11.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -380,14 +380,14 @@
         "lib/net6.0/WebDriver.Support.dll",
         "lib/netstandard2.0/WebDriver.Support.dll",
         "lib/netstandard2.1/WebDriver.Support.dll",
-        "selenium.support.4.10.0.nupkg.sha512",
+        "selenium.support.4.11.0.nupkg.sha512",
         "selenium.support.nuspec"
       ]
     },
-    "Selenium.WebDriver/4.10.0": {
-      "sha512": "MvgUaxeLqLOtRnNS+kHzqfOhLO+7ZEukhQMuS7ksQQPA2tGNXWhrRN3PTkTGuKhuodd9JkoZ4eCKVEQF6xPdmA==",
+    "Selenium.WebDriver/4.11.0": {
+      "sha512": "V8o+Nvi9/3Ix12ZzMGg+fI7sfu+HrflZkMGq8Orr+j0INbfpEEyM6KR9oaaHlm0WUXcn7dTYwyWrJxYsi6eniw==",
       "type": "package",
-      "path": "selenium.webdriver/4.10.0",
+      "path": "selenium.webdriver/4.11.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -405,7 +405,7 @@
         "manager/linux/selenium-manager",
         "manager/macos/selenium-manager",
         "manager/windows/selenium-manager.exe",
-        "selenium.webdriver.4.10.0.nupkg.sha512",
+        "selenium.webdriver.4.11.0.nupkg.sha512",
         "selenium.webdriver.nuspec"
       ]
     },
@@ -581,10 +581,10 @@
       "AngleSharp >= 1.0.4",
       "AngleSharp.Io >= 1.0.0",
       "Flurl >= 3.0.7",
-      "HtmlAgilityPack >= 1.11.48",
+      "HtmlAgilityPack >= 1.11.51",
       "RestSharp >= 110.2.0",
-      "Selenium.Support >= 4.10.0",
-      "Selenium.WebDriver >= 4.10.0"
+      "Selenium.Support >= 4.11.0",
+      "Selenium.WebDriver >= 4.11.0"
     ]
   },
   "packageFolders": {
@@ -594,11 +594,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cyber\\OneDrive\\Documents\\GitHub\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper.csproj",
+      "projectUniqueName": "C:\\Users\\cyber\\source\\repos\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper.csproj",
       "projectName": "DharmawheelScraper",
-      "projectPath": "C:\\Users\\cyber\\OneDrive\\Documents\\GitHub\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper.csproj",
+      "projectPath": "C:\\Users\\cyber\\source\\repos\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper.csproj",
       "packagesPath": "C:\\Users\\cyber\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cyber\\OneDrive\\Documents\\GitHub\\DharmawheelScraper\\DharmawheelScraper\\DharmawheelScraper\\obj\\",
+      "outputPath": "C:\\Users\\cyber\\source\\repos\\DharmawheelScraper\\DharmawheelScraper\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -645,7 +645,7 @@
           },
           "HtmlAgilityPack": {
             "target": "Package",
-            "version": "[1.11.48, )"
+            "version": "[1.11.51, )"
           },
           "RestSharp": {
             "target": "Package",
@@ -653,11 +653,11 @@
           },
           "Selenium.Support": {
             "target": "Package",
-            "version": "[4.10.0, )"
+            "version": "[4.11.0, )"
           },
           "Selenium.WebDriver": {
             "target": "Package",
-            "version": "[4.10.0, )"
+            "version": "[4.11.0, )"
           }
         },
         "imports": [
@@ -676,7 +676,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }

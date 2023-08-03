@@ -30,8 +30,8 @@
 
   <ItemGroup>
     <PackageReference Include="DocumentFormat.OpenXml" Version="2.20.0" />
-    <PackageReference Include="Spire.Doc" Version="11.4.12" />
-    <PackageReference Include="Spire.PDF" Version="9.4.12" />
+    <PackageReference Include="Spire.Doc" Version="11.7.25" />
+    <PackageReference Include="Spire.PDF" Version="9.7.17" />
     <PackageReference Include="Xceed.Document.NET" Version="2.5.23177.2123" />
     <PackageReference Include="Xceed.Words.NET" Version="2.5.23177.2123" />
   </ItemGroup>

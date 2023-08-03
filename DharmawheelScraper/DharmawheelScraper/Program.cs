@@ -67,9 +67,14 @@ namespace ConsoleApp
             // Uncomment below line to run Chrome in headless mode
             // options.AddArgument("--headless");
 
-            using var driver = new ChromeDriver(options);
+            //IWebDriver driver = null;// new ChromeDriver(options);
 
-            driver.Navigate().GoToUrl("https://www.dharmawheel.net/ucp.php?mode=login");
+            IWebDriver driver = new ChromeDriver(options);
+
+
+            //IWebDriver driver = null;
+
+            driver.Navigate().GoToUrl($"{BaseUrl}/ucp.php?mode=login");
 
             var usernameInput = driver.FindElement(By.Name("username"));
             var passwordInput = driver.FindElement(By.Name("password"));
@@ -91,26 +96,31 @@ namespace ConsoleApp
             submitButton.Click();
 
             // Now you are logged in, navigate to the page you want to scrape
-            driver.Navigate().GoToUrl("https://www.dharmawheel.net/index.php");
+            driver.Navigate().GoToUrl($"{BaseUrl}/index.php");
+
+            var url = $"{BaseUrl}/search.php?st=0&sk=t&sd=d&sr=posts&author_id={AuthorId}&start={CurrentPage * 20}";
+
             while (true)
             {
-                var url = $"{BaseUrl}/search.php?st=0&sk=t&sd=d&sr=posts&author_id={AuthorId}&start={CurrentPage * 20}";
-                Console.WriteLine($"Fetching page {CurrentPage}: {url}");
-
-                driver.Navigate().GoToUrl(url);
-                var results = driver.FindElements(By.CssSelector("[class^='search post']"));
-
-                if (results.Count == 0)
+                try
                 {
-                    Console.WriteLine("No more posts found");
-                    break;
-                }
+                    url = $"{BaseUrl}/search.php?st=0&sk=t&sd=d&sr=posts&author_id={AuthorId}&start={CurrentPage * 20}";
 
-                int resultsCount = results.Count;
+                    Console.WriteLine($"Fetching page {CurrentPage}: {url}");
 
-                for (int i = 0; i < resultsCount; i++)
-                {
-                    try
+                    driver.Navigate().GoToUrl(url);
+                    var results = driver.FindElements(By.CssSelector("[class^='search post']"));
+
+                    if (results.Count == 0)
+                    {
+                        Console.WriteLine("No more posts found");
+                        driver.Quit();
+                        break;
+                    }
+
+                    int resultsCount = results.Count;
+
+                    for (int i = 0; i < resultsCount; i++)
                     {
                         // Refresh the "results" after navigating back from the post page
                         results = driver.FindElements(By.CssSelector("[class^='search post']"));
@@ -135,6 +145,7 @@ namespace ConsoleApp
                             else
                                 Console.WriteLine("0 collected posts written.");
 
+                            driver.Quit();
                             return;
                         }
                         else if (CollectedPosts.Count <= TotalPosts && ScrapedPostsUrls.Contains(postLink))
@@ -157,6 +168,7 @@ namespace ConsoleApp
                             else
                                 Console.WriteLine("0 collected posts written.");
 
+                            driver.Quit();
                             return;
                         }
 
@@ -206,6 +218,7 @@ namespace ConsoleApp
                             else
                                 Console.WriteLine("0 collected posts written.");
 
+                            driver.Quit();
                             return;
                         }
 
@@ -227,14 +240,44 @@ namespace ConsoleApp
                         // Wait for the page to load
                         await Task.Delay(TimeSpan.FromSeconds(2));
                     }
-                    catch (StaleElementReferenceException)
-                    {
-                        Console.WriteLine("Stale element reference error. Skipping to next post.");
-                        continue;
-                    }
+
+                    CurrentPage++;
+                }
+                catch (WebDriverException ex)
+                {
+                    Console.WriteLine($"Caught WebDriverException: {ex.Message}. Attempting to recover.");
+
+                    // Wait a bit before trying to recover
+                    await Task.Delay(TimeSpan.FromSeconds(2));
+
+                    // Dispose the current driver instance
+                    driver.Dispose();
+
+                    // Create a new driver instance
+                    driver = new ChromeDriver(options);
+
+                    // You'll need to log in again here, since this is a new driver instance
+
+                    driver.Navigate().GoToUrl($"{BaseUrl}/ucp.php?mode=login");
+                    usernameInput = driver.FindElement(By.Name("username"));
+                    passwordInput = driver.FindElement(By.Name("password"));
+                    submitButton = driver.FindElement(By.Name("login"));
+
+                    usernameInput.SendKeys("nyingje");
+                    passwordInput.SendKeys("kila8118");
+                    submitButton.Click();
+
+                    // Now you are logged in, navigate to the page you were trying to scrape
+                    driver.Navigate().GoToUrl(url);
+
+                    // Since we're in a loop, the next iteration will try to scrape the posts again
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Stale error {ex.ToString()}. Skipping to next post.");
+                    continue;
                 }
 
-                CurrentPage++;
             }
 
             if (CollectedPosts.Any())

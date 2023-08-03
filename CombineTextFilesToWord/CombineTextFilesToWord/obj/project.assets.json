@@ -40,7 +40,7 @@
           }
         }
       },
-      "Spire.Doc/11.4.12": {
+      "Spire.Doc/11.7.25": {
         "type": "package",
         "dependencies": {
           "System.Drawing.Common": "6.0.0",
@@ -51,21 +51,15 @@
         "compile": {
           "lib/net6.0/Spire.Doc.dll": {
             "related": ".xml"
-          },
-          "lib/net6.0/Spire.Pdf.dll": {
-            "related": ".xml"
           }
         },
         "runtime": {
           "lib/net6.0/Spire.Doc.dll": {
             "related": ".xml"
-          },
-          "lib/net6.0/Spire.Pdf.dll": {
-            "related": ".xml"
           }
         }
       },
-      "Spire.PDF/9.4.12": {
+      "Spire.PDF/9.7.17": {
         "type": "package",
         "dependencies": {
           "System.Drawing.Common": "6.0.0",
@@ -393,42 +387,32 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Spire.Doc/11.4.12": {
-      "sha512": "Hgt7F98O0f0oU87cNdq/001zS6L+YypfHnyHN59nWchdEI5hdOyWs57RsWAoQxDNgAzm4lW3yXgZlP3s6JH5Qg==",
+    "Spire.Doc/11.7.25": {
+      "sha512": "MpLagZuL8gegCCDprO7/CU3aCUwzMnNsqaCVnvT4Ts69yDH48+keVCZzSz/I7R71tBLnsijiHlmDFF6PxaZUhw==",
       "type": "package",
-      "path": "spire.doc/11.4.12",
+      "path": "spire.doc/11.7.25",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/MonoAndroid/Spire.Doc.dll",
         "lib/MonoAndroid/Spire.Doc.xml",
-        "lib/MonoAndroid/Spire.Pdf.dll",
-        "lib/MonoAndroid/Spire.Pdf.xml",
         "lib/net40/Spire.Doc.XML",
         "lib/net40/Spire.Doc.dll",
-        "lib/net40/Spire.Pdf.dll",
-        "lib/net40/Spire.Pdf.xml",
         "lib/net6.0/Spire.Doc.dll",
         "lib/net6.0/Spire.Doc.xml",
-        "lib/net6.0/Spire.Pdf.dll",
-        "lib/net6.0/Spire.Pdf.xml",
         "lib/netcoreapp2.0/Spire.Doc.dll",
         "lib/netcoreapp2.0/Spire.Doc.xml",
-        "lib/netcoreapp2.0/Spire.Pdf.dll",
-        "lib/netcoreapp2.0/Spire.Pdf.xml",
         "lib/xamarinios/Spire.Doc.dll",
         "lib/xamarinios/Spire.Doc.xml",
-        "lib/xamarinios/Spire.Pdf.dll",
-        "lib/xamarinios/Spire.Pdf.xml",
         "license.txt",
-        "spire.doc.11.4.12.nupkg.sha512",
+        "spire.doc.11.7.25.nupkg.sha512",
         "spire.doc.nuspec"
       ]
     },
-    "Spire.PDF/9.4.12": {
-      "sha512": "b1Ez2kmOHlMdrZZEkUffinLHYHQ5R55E3xU/pihsR/cJkOC+PvuGnI+XzTfUkn3Pr0UqSMw8IFKE1g8+jrRKCg==",
+    "Spire.PDF/9.7.17": {
+      "sha512": "FpSgVeni3le7214RPEc4Mk0QKTCxBY6aR2FrJUiXIOp211AYUQqTAzZ5CmKp417Pq6sg1oH++l6+EqmWF9Fj+w==",
       "type": "package",
-      "path": "spire.pdf/9.4.12",
+      "path": "spire.pdf/9.7.17",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -443,7 +427,7 @@
         "lib/xamarinios/Spire.Pdf.dll",
         "lib/xamarinios/Spire.Pdf.xml",
         "license.txt",
-        "spire.pdf.9.4.12.nupkg.sha512",
+        "spire.pdf.9.7.17.nupkg.sha512",
         "spire.pdf.nuspec"
       ]
     },
@@ -796,8 +780,8 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "DocumentFormat.OpenXml >= 2.20.0",
-      "Spire.Doc >= 11.4.12",
-      "Spire.PDF >= 9.4.12",
+      "Spire.Doc >= 11.7.25",
+      "Spire.PDF >= 9.7.17",
       "Xceed.Document.NET >= 2.5.23177.2123",
       "Xceed.Words.NET >= 2.5.23177.2123"
     ]
@@ -852,11 +836,11 @@
           },
           "Spire.Doc": {
             "target": "Package",
-            "version": "[11.4.12, )"
+            "version": "[11.7.25, )"
           },
           "Spire.PDF": {
             "target": "Package",
-            "version": "[9.4.12, )"
+            "version": "[9.7.17, )"
           },
           "Xceed.Document.NET": {
             "target": "Package",
@@ -883,7 +867,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }

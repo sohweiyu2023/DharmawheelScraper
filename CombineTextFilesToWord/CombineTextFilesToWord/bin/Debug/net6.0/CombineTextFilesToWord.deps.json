@@ -9,8 +9,8 @@
       "CombineTextFilesToWord/1.0.0": {
         "dependencies": {
           "DocumentFormat.OpenXml": "2.20.0",
-          "Spire.Doc": "11.4.12",
-          "Spire.PDF": "9.4.12",
+          "Spire.Doc": "11.7.25",
+          "Spire.PDF": "9.7.17",
           "Xceed.Document.NET": "2.5.23177.2123",
           "Xceed.Words.NET": "2.5.23177.2123"
         },
@@ -45,7 +45,7 @@
           }
         }
       },
-      "Spire.Doc/11.4.12": {
+      "Spire.Doc/11.7.25": {
         "dependencies": {
           "System.Drawing.Common": "6.0.0",
           "System.Security.Cryptography.Xml": "6.0.0",
@@ -54,19 +54,21 @@
         },
         "runtime": {
           "lib/net6.0/Spire.Doc.dll": {
-            "assemblyVersion": "11.4.12.0",
-            "fileVersion": "11.4.12.3360"
-          },
-          "lib/net6.0/Spire.Pdf.dll": {
-            "assemblyVersion": "9.4.12.0",
-            "fileVersion": "9.4.12.1360"
+            "assemblyVersion": "11.7.25.0",
+            "fileVersion": "11.7.25.3360"
           }
         }
       },
-      "Spire.PDF/9.4.12": {
+      "Spire.PDF/9.7.17": {
         "dependencies": {
           "System.Drawing.Common": "6.0.0",
           "System.Text.Encoding.CodePages": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Spire.Pdf.dll": {
+            "assemblyVersion": "9.7.17.0",
+            "fileVersion": "9.7.17.1360"
+          }
         }
       },
       "System.Drawing.Common/6.0.0": {
@@ -230,19 +232,19 @@
       "path": "microsoft.win32.systemevents/6.0.0",
       "hashPath": "microsoft.win32.systemevents.6.0.0.nupkg.sha512"
     },
-    "Spire.Doc/11.4.12": {
+    "Spire.Doc/11.7.25": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Hgt7F98O0f0oU87cNdq/001zS6L+YypfHnyHN59nWchdEI5hdOyWs57RsWAoQxDNgAzm4lW3yXgZlP3s6JH5Qg==",
-      "path": "spire.doc/11.4.12",
-      "hashPath": "spire.doc.11.4.12.nupkg.sha512"
+      "sha512": "sha512-MpLagZuL8gegCCDprO7/CU3aCUwzMnNsqaCVnvT4Ts69yDH48+keVCZzSz/I7R71tBLnsijiHlmDFF6PxaZUhw==",
+      "path": "spire.doc/11.7.25",
+      "hashPath": "spire.doc.11.7.25.nupkg.sha512"
     },
-    "Spire.PDF/9.4.12": {
+    "Spire.PDF/9.7.17": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-b1Ez2kmOHlMdrZZEkUffinLHYHQ5R55E3xU/pihsR/cJkOC+PvuGnI+XzTfUkn3Pr0UqSMw8IFKE1g8+jrRKCg==",
-      "path": "spire.pdf/9.4.12",
-      "hashPath": "spire.pdf.9.4.12.nupkg.sha512"
+      "sha512": "sha512-FpSgVeni3le7214RPEc4Mk0QKTCxBY6aR2FrJUiXIOp211AYUQqTAzZ5CmKp417Pq6sg1oH++l6+EqmWF9Fj+w==",
+      "path": "spire.pdf/9.7.17",
+      "hashPath": "spire.pdf.9.7.17.nupkg.sha512"
     },
     "System.Drawing.Common/6.0.0": {
       "type": "package",
