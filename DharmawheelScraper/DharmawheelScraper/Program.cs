@@ -36,6 +36,8 @@ namespace ConsoleApp
 
         private static readonly RestClient client = new RestClient();
 
+
+        private static int PostsPerSearchPage = 20;
         static async Task Main(string[] args)
         {
             Console.WriteLine("Do you want to scrape the latest posts only? (yes/no)");
@@ -73,13 +75,38 @@ namespace ConsoleApp
 
 
             //IWebDriver driver = null;
+            int maxAttempts = 5;  // Adjust this value according to your requirements
 
-            driver.Navigate().GoToUrl($"{BaseUrl}/ucp.php?mode=login");
+            for (int attempt = 1; attempt <= maxAttempts; attempt++)
+            {
+                try
+                {
+                    driver.Navigate().GoToUrl($"{BaseUrl}/ucp.php?mode=login");
 
-            var usernameInput = driver.FindElement(By.Name("username"));
-            var passwordInput = driver.FindElement(By.Name("password"));
-            var submitButton = driver.FindElement(By.Name("login"));
+                    var usernameInput = driver.FindElement(By.Name("username"));
+                    var passwordInput = driver.FindElement(By.Name("password"));
+                    var submitButton = driver.FindElement(By.Name("login"));
 
+                    usernameInput.SendKeys("nyingje");
+                    passwordInput.SendKeys("kila8118");
+                    submitButton.Click();
+                    // If we successfully found the elements, break out of the loop
+                    break;
+                }
+                catch (WebDriverException ex)
+                {
+                    Console.WriteLine($"Attempt {attempt}: WebDriverException occurred: {ex.Message}");
+
+                    // If it was the last attempt, rethrow the exception
+                    if (attempt == maxAttempts)
+                    {
+                        throw;
+                    }
+
+                    // Wait for a bit before the next attempt
+                    System.Threading.Thread.Sleep(5000);  // Adjust this value according to your requirements
+                }
+            }
             /*Please be aware that with new accounts on the Dharmawheel platform such as "nyingje", 
              * there may be limitations on scraping the most recent posts from the same day. 
              * This limitation seems to be tied to the age and activity level of the account used for scraping. 
@@ -91,20 +118,17 @@ namespace ConsoleApp
              * Please make sure to respect the platform's guidelines and terms of use when using this scraping tool."
              * */
 
-            usernameInput.SendKeys("nyingje");
-            passwordInput.SendKeys("kila8118");
-            submitButton.Click();
 
             // Now you are logged in, navigate to the page you want to scrape
             driver.Navigate().GoToUrl($"{BaseUrl}/index.php");
 
-            var url = $"{BaseUrl}/search.php?st=0&sk=t&sd=d&sr=posts&author_id={AuthorId}&start={CurrentPage * 20}";
+            var url = $"{BaseUrl}/search.php?st=0&sk=t&sd=d&sr=posts&author_id={AuthorId}&start={CurrentPage * PostsPerSearchPage}";
 
             while (true)
             {
                 try
                 {
-                    url = $"{BaseUrl}/search.php?st=0&sk=t&sd=d&sr=posts&author_id={AuthorId}&start={CurrentPage * 20}";
+                    url = $"{BaseUrl}/search.php?st=0&sk=t&sd=d&sr=posts&author_id={AuthorId}&start={CurrentPage * PostsPerSearchPage}";
 
                     Console.WriteLine($"Fetching page {CurrentPage}: {url}");
 
@@ -245,32 +269,56 @@ namespace ConsoleApp
                 }
                 catch (WebDriverException ex)
                 {
-                    Console.WriteLine($"Caught WebDriverException: {ex.Message}. Attempting to recover.");
+                    maxAttempts = 5;
 
-                    // Wait a bit before trying to recover
-                    await Task.Delay(TimeSpan.FromSeconds(2));
+                    for (int attempt = 1; attempt <= maxAttempts; attempt++)
+                    {
+                        try
+                        {
+                            Console.WriteLine($"Caught WebDriverException: {ex.Message}. Attempting to recover.");
 
-                    // Dispose the current driver instance
-                    driver.Dispose();
 
-                    // Create a new driver instance
-                    driver = new ChromeDriver(options);
+                            // Wait a bit before trying to recover
+                            await Task.Delay(TimeSpan.FromSeconds(2));
 
-                    // You'll need to log in again here, since this is a new driver instance
+                            // Dispose the current driver instance
+                            driver.Dispose();
 
-                    driver.Navigate().GoToUrl($"{BaseUrl}/ucp.php?mode=login");
-                    usernameInput = driver.FindElement(By.Name("username"));
-                    passwordInput = driver.FindElement(By.Name("password"));
-                    submitButton = driver.FindElement(By.Name("login"));
+                            // Create a new driver instance
+                            driver = new ChromeDriver(options);
 
-                    usernameInput.SendKeys("nyingje");
-                    passwordInput.SendKeys("kila8118");
-                    submitButton.Click();
+                            // You'll need to log in again here, since this is a new driver instance
 
-                    // Now you are logged in, navigate to the page you were trying to scrape
-                    driver.Navigate().GoToUrl(url);
+                            driver.Navigate().GoToUrl($"{BaseUrl}/ucp.php?mode=login");
+                            var usernameInput = driver.FindElement(By.Name("username"));
+                            var passwordInput = driver.FindElement(By.Name("password"));
+                            var submitButton = driver.FindElement(By.Name("login"));
 
-                    // Since we're in a loop, the next iteration will try to scrape the posts again
+                            usernameInput.SendKeys("nyingje");
+                            passwordInput.SendKeys("kila8118");
+                            submitButton.Click();
+
+                            // Now you are logged in, navigate to the page you were trying to scrape
+                            driver.Navigate().GoToUrl(url);
+
+                            // Since we're in a loop, the next iteration will try to scrape the posts again
+                            // If we successfully found the elements, break out of the loop
+                            break;
+                        }
+                        catch (WebDriverException ex0)
+                        {
+                            Console.WriteLine($"Attempt {attempt}: WebDriverException occurred: {ex0.Message}");
+
+                            // If it was the last attempt, rethrow the exception
+                            if (attempt == maxAttempts)
+                            {
+                                throw;
+                            }
+
+                            // Wait for a bit before the next attempt
+                            System.Threading.Thread.Sleep(5000);  // Adjust this value according to your requirements
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -292,6 +340,7 @@ namespace ConsoleApp
                 }
             }
         }
+
         private static async Task LoginToWebsite(RestClient client)
         {
             var loginPageRequest = new RestRequest($"{BaseUrl}/ucp.php?mode=login", Method.Get);
