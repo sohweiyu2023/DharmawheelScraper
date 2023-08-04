@@ -12,6 +12,8 @@ using System.IO.Compression; // Include this at the top of your file to use the 
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Collections;
+using static System.Net.WebRequestMethods;
+using File = System.IO.File;
 
 namespace AutoScrapper
 {
@@ -150,10 +152,18 @@ namespace AutoScrapper
 
                 await RunConsoleApp(latestFile.FullName, "yes");//path + "DharmawheelScraper.exe", "yes");
 
+                Console.WriteLine("Starting StepsTwoToFourAsync");
+                Trace.WriteLine($"{DateTime.Now} - Starting StepsTwoToFourAsync");
+
                 string authorName = await StepsTwoToFourAsync(path);
+
+                Console.WriteLine("Finished StepsTwoToFourAsync");
+                Trace.WriteLine($"{DateTime.Now} - Finished StepsTwoToFourAsync");
 
                 if (authorName == "failed!")
                 {
+                    Console.WriteLine("authorName == failed!");
+                    Trace.WriteLine($"{DateTime.Now} - authorName == failed!");
                     return;
                 }
 
@@ -183,12 +193,12 @@ namespace AutoScrapper
                     string zipFileNameCategorisedWordsAndPDFs = "MalcolmCategorisedWordsAndPDFs.zip";
                     string zipFilePathCategorisedWordsAndPDFs = Path.Combine(categorisedWordsAndPDFsPath, zipFileNameCategorisedWordsAndPDFs);
                     ZipDirectory(categorisedWordsAndPDFsPath, zipFilePathCategorisedWordsAndPDFs, "*.*");
-                    
+
                     File.Move(zipFilePathCategorisedWordsAndPDFs, uploadThesePath + @"\" + Path.GetFileName(zipFilePathCategorisedWordsAndPDFs));
-                     
+
 
                     DistributeFiles(path, path + malcolm3PartsPath, 3, "Malcolm");
-                     
+
                     DistributeFiles(path, path + malcolm12PartsPath, 12, "Malcolm");
 
                     authorName = await StepsTwoToFourAsync(path + malcolm3PartsPath);
@@ -284,10 +294,13 @@ namespace AutoScrapper
             string programPath = Path.Combine(directoryThreeLevelsUp, "Program.cs");
 
             Console.WriteLine("Searching program.cs in " + programPath);
+            Trace.WriteLine("Searching program.cs in " + programPath);
             string authorName = null;
 
             if (File.Exists(programPath))
             {
+                Console.WriteLine("File exists in " + programPath);
+                Trace.WriteLine("File exists in " + programPath);
                 var lines = File.ReadLines(programPath);
                 var authorLine = lines.FirstOrDefault(line => line.Contains("private const string AuthorName"));
 
@@ -304,6 +317,9 @@ namespace AutoScrapper
                 string directoryTwoLevelsUp = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(path)));
                 programPath = Path.Combine(directoryTwoLevelsUp, "Program.cs");
 
+
+                Console.WriteLine("File doesn't exists in " + programPath + ", searching in " + programPath);
+                Trace.WriteLine("File doesn't exists in " + programPath + ", searching in " + programPath);
 
                 var lines = File.ReadLines(programPath);
                 var authorLine = lines.FirstOrDefault(line => line.Contains("private const string AuthorName"));
@@ -403,27 +419,54 @@ namespace AutoScrapper
 
         public static void ZipAllDirectories(string sourceDirectoryName, string destinationArchiveFileName, string searchPattern)
         {
-            try
+            int retryCount = 5;
+            for (int attempt = 0; attempt < retryCount; attempt++)
             {
-                sourceDirectoryName = sourceDirectoryName.TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
-                var sourceDirectory = new DirectoryInfo(sourceDirectoryName);
-
-                using (var archive = ZipFile.Open(destinationArchiveFileName, ZipArchiveMode.Create))
+                try
                 {
-                    foreach (var file in sourceDirectory.GetFiles(searchPattern, SearchOption.AllDirectories)
-                      .Where(file => file.FullName.ToLower().EndsWith("docx") || file.FullName.ToLower().EndsWith("pdf") || file.FullName.ToLower().EndsWith("txt")))
-                    {
-                        var relativePath = file.FullName.Substring(sourceDirectoryName.Length);
-                        archive.CreateEntryFromFile(file.FullName, relativePath);
-                    }
-                }
+                    sourceDirectoryName = sourceDirectoryName.TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
+                    var sourceDirectory = new DirectoryInfo(sourceDirectoryName);
 
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred in ZipDirectory: {ex.Message}\nStack trace: {ex.StackTrace}");
-                // Log the exception as needed
-                Trace.WriteLine($"{DateTime.Now} - An error occurred in ZipDirectory: {ex.Message}\nStack trace: {ex.StackTrace}");
+                    Trace.WriteLine($"{DateTime.Now} - Attempt {attempt} - Starting to create: {destinationArchiveFileName}");
+                    using (var archive = ZipFile.Open(destinationArchiveFileName, ZipArchiveMode.Create))
+                    {
+                        foreach (var file in sourceDirectory.GetFiles(searchPattern, SearchOption.TopDirectoryOnly)
+                          .Where(file => file.FullName.ToLower().EndsWith("docx") || file.FullName.ToLower().EndsWith("pdf") || file.FullName.ToLower().EndsWith("txt")))
+                        {
+                            var relativePath = file.FullName.Substring(sourceDirectoryName.Length);
+                            archive.CreateEntryFromFile(file.FullName, relativePath);
+                        }
+                    }
+
+                    // If no exception has been thrown, the file has been successfully created, so we can break the loop
+
+                    if (File.Exists(destinationArchiveFileName))
+                    {
+                        Trace.WriteLine($"{DateTime.Now} - Finished creating: {destinationArchiveFileName}");
+                        break;
+                    }
+                    else
+                    {
+                        Trace.WriteLine($"{DateTime.Now} - File does not exist! Unable to finish creating in attempt {attempt}: {destinationArchiveFileName}");
+                    }
+
+                }
+                catch (IOException ex)
+                {
+                    Console.WriteLine($"An IO error occurred in ZipDirectory: {ex.Message}\nStack trace: {ex.StackTrace}");
+                    Trace.WriteLine($"{DateTime.Now} - An IO error occurred in ZipDirectory: {ex.Message}\nStack trace: {ex.StackTrace}");
+
+                    // If there was an IO exception (like file lock), wait for a bit before trying again
+                    System.Threading.Thread.Sleep(2000); // Wait for 2 seconds
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred in ZipDirectory: {ex.Message}\nStack trace: {ex.StackTrace}");
+                    Trace.WriteLine($"{DateTime.Now} - An error occurred in ZipDirectory: {ex.Message}\nStack trace: {ex.StackTrace}");
+
+                    // For any other type of exception, we probably can't recover by simply retrying, so we should just fail immediately
+                    break;
+                }
             }
         }
 

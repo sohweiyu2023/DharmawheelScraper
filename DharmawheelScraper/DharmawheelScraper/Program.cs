@@ -87,7 +87,7 @@ namespace ConsoleApp
                     var passwordInput = driver.FindElement(By.Name("password"));
                     var submitButton = driver.FindElement(By.Name("login"));
 
-                    usernameInput.SendKeys("nyingje");
+                    usernameInput.SendKeys("xabir");
                     passwordInput.SendKeys("kila8118");
                     submitButton.Click();
                     // If we successfully found the elements, break out of the loop
@@ -180,7 +180,7 @@ namespace ConsoleApp
 
                         ScrapedPostsUrls.Add(postLink);
 
-                        var author = result.FindElement(By.CssSelector("a.username")).Text.Trim();
+                        var author = result.FindElement(By.CssSelector($"a.username{((AuthorName == "Dhammanando") ? "-coloured" : "")}")).Text.Trim();
                         var postTime = DateTime.ParseExact(result.FindElement(By.CssSelector("dd.search-result-date")).Text.Trim(), "ddd MMM d, yyyy h:mm tt", CultureInfo.InvariantCulture);
 
                         if (stopDate.HasValue && postTime <= stopDate.Value)
@@ -294,7 +294,7 @@ namespace ConsoleApp
                             var passwordInput = driver.FindElement(By.Name("password"));
                             var submitButton = driver.FindElement(By.Name("login"));
 
-                            usernameInput.SendKeys("nyingje");
+                            usernameInput.SendKeys("xabir");
                             passwordInput.SendKeys("kila8118");
                             submitButton.Click();
 
