@@ -87,7 +87,7 @@ namespace ConsoleApp
                     var passwordInput = driver.FindElement(By.Name("password"));
                     var submitButton = driver.FindElement(By.Name("login"));
 
-                    usernameInput.SendKeys("xabir");
+                    usernameInput.SendKeys("nyingje");
                     passwordInput.SendKeys("kila8118");
                     submitButton.Click();
                     // If we successfully found the elements, break out of the loop
@@ -294,7 +294,7 @@ namespace ConsoleApp
                             var passwordInput = driver.FindElement(By.Name("password"));
                             var submitButton = driver.FindElement(By.Name("login"));
 
-                            usernameInput.SendKeys("xabir");
+                            usernameInput.SendKeys("nyingje");
                             passwordInput.SendKeys("kila8118");
                             submitButton.Click();
 
