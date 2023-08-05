@@ -430,7 +430,7 @@ namespace AutoScrapper
                     Trace.WriteLine($"{DateTime.Now} - Attempt {attempt} - Starting to create: {destinationArchiveFileName}");
                     using (var archive = ZipFile.Open(destinationArchiveFileName, ZipArchiveMode.Create))
                     {
-                        foreach (var file in sourceDirectory.GetFiles(searchPattern, SearchOption.TopDirectoryOnly)
+                        foreach (var file in sourceDirectory.GetFiles(searchPattern, SearchOption.AllDirectories)
                           .Where(file => file.FullName.ToLower().EndsWith("docx") || file.FullName.ToLower().EndsWith("pdf") || file.FullName.ToLower().EndsWith("txt")))
                         {
                             var relativePath = file.FullName.Substring(sourceDirectoryName.Length);
