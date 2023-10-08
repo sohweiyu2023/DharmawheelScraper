@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Bd+7VP1ByeUljH3EjkL2jUdkSjmOhzjgjsdmA8xN2VgOvN5aoT4X1X2rtNu82iE+58zA3OhOAJoc1TjoLXQneA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\cyber\\source\\repos\\SplitWordDocuments\\SplitWordDocuments\\SplitWordDocuments.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\cyber\\.nuget\\packages\\documentformat.openxml\\2.20.0\\documentformat.openxml.2.20.0.nupkg.sha512",
+    "C:\\Users\\cyber\\.nuget\\packages\\system.io.packaging\\4.7.0\\system.io.packaging.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}
