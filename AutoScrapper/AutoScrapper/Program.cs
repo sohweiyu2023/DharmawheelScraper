@@ -182,7 +182,7 @@ namespace AutoScrapper
                 string zipFileName2 = "";
                 string zipFileName3 = "";
 
-                if (path.Contains(@"DharmawheelScraper\DharmawheelScraper\bin\Debug\net6.0"))
+                if (path.Contains(@"DharmawheelScraper-gpt-o1-preview\DharmawheelScraper\bin\Debug\net6.0"))
                 {
                     zipFileName = malcolm1PartPath + ".zip";
                     zipFileName2 = malcolm3PartsPath + ".zip";

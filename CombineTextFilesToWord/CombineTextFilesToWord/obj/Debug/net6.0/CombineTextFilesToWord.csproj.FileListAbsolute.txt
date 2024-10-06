@@ -10,7 +10,6 @@ C:\Users\cyber\source\repos\CombineTextFilesToWord\CombineTextFilesToWord\obj\De
 C:\Users\cyber\source\repos\CombineTextFilesToWord\CombineTextFilesToWord\obj\Debug\net6.0\CombineTextFilesToWord.AssemblyInfoInputs.cache
 C:\Users\cyber\source\repos\CombineTextFilesToWord\CombineTextFilesToWord\obj\Debug\net6.0\CombineTextFilesToWord.AssemblyInfo.cs
 C:\Users\cyber\source\repos\CombineTextFilesToWord\CombineTextFilesToWord\obj\Debug\net6.0\CombineTextFilesToWord.csproj.CoreCompileInputs.cache
-C:\Users\cyber\source\repos\CombineTextFilesToWord\CombineTextFilesToWord\obj\Debug\net6.0\CombineTextFilesToWord.csproj.CopyComplete
 C:\Users\cyber\source\repos\CombineTextFilesToWord\CombineTextFilesToWord\obj\Debug\net6.0\CombineTextFilesToWord.dll
 C:\Users\cyber\source\repos\CombineTextFilesToWord\CombineTextFilesToWord\obj\Debug\net6.0\refint\CombineTextFilesToWord.dll
 C:\Users\cyber\source\repos\CombineTextFilesToWord\CombineTextFilesToWord\obj\Debug\net6.0\CombineTextFilesToWord.pdb
@@ -35,3 +34,4 @@ C:\Users\cyber\source\repos\CombineTextFilesToWord\CombineTextFilesToWord\bin\De
 C:\Users\cyber\source\repos\CombineTextFilesToWord\CombineTextFilesToWord\obj\Debug\net6.0\Interop.MBAMEXTLib.dll
 C:\Users\cyber\source\repos\CombineTextFilesToWord\CombineTextFilesToWord\obj\Debug\net6.0\Interop.Microsoft.Office.Interop.Word.dll
 C:\Users\cyber\source\repos\CombineTextFilesToWord\CombineTextFilesToWord\obj\Debug\net6.0\CombineTextFilesToWord.csproj.ResolveComReference.cache
+C:\Users\cyber\source\repos\CombineTextFilesToWord\CombineTextFilesToWord\obj\Debug\net6.0\CombineT.83F30BA3.Up2Date

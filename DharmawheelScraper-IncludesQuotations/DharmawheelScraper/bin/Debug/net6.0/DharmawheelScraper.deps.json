@@ -1,0 +1,214 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "DharmawheelScraper/1.0.0": {
+        "dependencies": {
+          "AngleSharp": "1.1.2",
+          "AngleSharp.Io": "1.0.0",
+          "Flurl": "4.0.0",
+          "HtmlAgilityPack": "1.11.66",
+          "RestSharp": "112.0.0",
+          "Selenium.Support": "4.25.0",
+          "Selenium.WebDriver": "4.25.0"
+        },
+        "runtime": {
+          "DharmawheelScraper.dll": {}
+        }
+      },
+      "AngleSharp/1.1.2": {
+        "dependencies": {
+          "System.Text.Encoding.CodePages": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/AngleSharp.dll": {
+            "assemblyVersion": "1.1.2.0",
+            "fileVersion": "1.1.2.0"
+          }
+        }
+      },
+      "AngleSharp.Io/1.0.0": {
+        "dependencies": {
+          "AngleSharp": "1.1.2"
+        },
+        "runtime": {
+          "lib/net6.0/AngleSharp.Io.dll": {
+            "assemblyVersion": "0.17.0.0",
+            "fileVersion": "0.17.0.0"
+          }
+        }
+      },
+      "Flurl/4.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/Flurl.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "HtmlAgilityPack/1.11.66": {
+        "runtime": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {
+            "assemblyVersion": "1.11.66.0",
+            "fileVersion": "1.11.66.0"
+          }
+        }
+      },
+      "RestSharp/112.0.0": {
+        "runtime": {
+          "lib/net6.0/RestSharp.dll": {
+            "assemblyVersion": "112.0.0.0",
+            "fileVersion": "112.0.0.0"
+          }
+        }
+      },
+      "Selenium.Support/4.25.0": {
+        "dependencies": {
+          "Selenium.WebDriver": "4.25.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/WebDriver.Support.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Selenium.WebDriver/4.25.0": {
+        "dependencies": {
+          "System.Text.Json": "8.0.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/WebDriver.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
+      "System.Text.Encoding.CodePages/6.0.0": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        }
+      },
+      "System.Text.Encodings.Web/8.0.0": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/System.Text.Encodings.Web.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll": {
+            "rid": "browser",
+            "assetType": "runtime",
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "System.Text.Json/8.0.4": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
+          "System.Text.Encodings.Web": "8.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/System.Text.Json.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.724.31311"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DharmawheelScraper/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AngleSharp/1.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aRFpAqixbuj1Vmqy2hsWPF0PJygo1SfjvmpBvVWZv6i+/u+C/L4wDdwFIzyCGUbjqr61NsZdPNPqDE8wlmG2qA==",
+      "path": "anglesharp/1.1.2",
+      "hashPath": "anglesharp.1.1.2.nupkg.sha512"
+    },
+    "AngleSharp.Io/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3gQKDfzIdAUWg6KRHRHHZEUzrW+oEdhnP9ubPbuSv9/HtTzJL1tCgILH6EjqCbnydDUgdETCMVrLvCLQHMgAYg==",
+      "path": "anglesharp.io/1.0.0",
+      "hashPath": "anglesharp.io.1.0.0.nupkg.sha512"
+    },
+    "Flurl/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rpts69yYgvJqg6PPgqShBQEZ4aNzWQqWpWppcT0oDWxDCIsBqiod4pj6LQZdhk+1OozLFagemldMRACdHF3CsA==",
+      "path": "flurl/4.0.0",
+      "hashPath": "flurl.4.0.0.nupkg.sha512"
+    },
+    "HtmlAgilityPack/1.11.66": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kRlJ/rnvDzSPZv294uR+k3IR04eQO1IxdYJuUPPFETZ0W2NDDRiuZlfgYaDX17OVvODJFWj6+lsMOko/Xj5XVQ==",
+      "path": "htmlagilitypack/1.11.66",
+      "hashPath": "htmlagilitypack.1.11.66.nupkg.sha512"
+    },
+    "RestSharp/112.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vezxJ6DLk0eDx+rmXwVHQvJ3elZCJfnLd8neRrkA+IvTs9falf2CEAolsjI1YKkkHTOvG13xWTnHK7gU0zgaaw==",
+      "path": "restsharp/112.0.0",
+      "hashPath": "restsharp.112.0.0.nupkg.sha512"
+    },
+    "Selenium.Support/4.25.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nIWkD1kth4Taq2XgDuvPv2xDpFzm3SODvfmuuTGvYYFYHAteWcOeczwsVMQErLtwKjEwfdGO0B9dwDr+i5ZEkQ==",
+      "path": "selenium.support/4.25.0",
+      "hashPath": "selenium.support.4.25.0.nupkg.sha512"
+    },
+    "Selenium.WebDriver/4.25.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0g/9I5ennfL2ZaQoXsfEPj+GcqrKlcVr1yxh3C/Eed/acNZrC38OaXLorsuHdAHiGn+QySV3iz8/hFcOXvVcoA==",
+      "path": "selenium.webdriver/4.25.0",
+      "hashPath": "selenium.webdriver.4.25.0.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    },
+    "System.Text.Encoding.CodePages/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZFCILZuOvtKPauZ/j/swhvw68ZRi9ATCfvGbk1QfydmcXBkIWecWKn/250UH7rahZ5OoDBaiAudJtPvLwzw85A==",
+      "path": "system.text.encoding.codepages/6.0.0",
+      "hashPath": "system.text.encoding.codepages.6.0.0.nupkg.sha512"
+    },
+    "System.Text.Encodings.Web/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yev/k9GHAEGx2Rg3/tU6MQh4HGBXJs70y7j1LaM1i/ER9po+6nnQ6RRqTJn1E7Xu0fbIFK80Nh5EoODxrbxwBQ==",
+      "path": "system.text.encodings.web/8.0.0",
+      "hashPath": "system.text.encodings.web.8.0.0.nupkg.sha512"
+    },
+    "System.Text.Json/8.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bAkhgDJ88XTsqczoxEMliSrpijKZHhbJQldhAmObj/RbrN3sU5dcokuXmWJWsdQAhiMJ9bTayWsL1C9fbbCRhw==",
+      "path": "system.text.json/8.0.4",
+      "hashPath": "system.text.json.8.0.4.nupkg.sha512"
+    }
+  }
+}

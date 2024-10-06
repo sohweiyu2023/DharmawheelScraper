@@ -258,24 +258,32 @@ namespace CombineTextFilesToWord
         private static List<string> ReadEntriesFromWordFile(string filePath)
         {
             List<string> entries = new List<string>();
-
             using (WordprocessingDocument document = WordprocessingDocument.Open(filePath, false))
             {
                 DocumentFormat.OpenXml.Wordprocessing.Body body = document.MainDocumentPart.Document.Body;
-                string[] paragraphs = body.Descendants<DocumentFormat.OpenXml.Wordprocessing.Paragraph>().Select(p => p.InnerText).ToArray();
-                string entrySeparator = "Author: ";
+                var paragraphs = body.Descendants<DocumentFormat.OpenXml.Wordprocessing.Paragraph>().Select(p => p.InnerText).ToArray();
 
-                string entryContent = string.Join("\n", paragraphs).Replace("\r", "");
-                string[] entryArray = entryContent.Split(new[] { entrySeparator }, StringSplitOptions.RemoveEmptyEntries);
-
-                for (int i = 0; i < entryArray.Length; i++)
+                List<string> currentEntryLines = new List<string>();
+                foreach (var line in paragraphs)
                 {
-                    entries.Add(entrySeparator + entryArray[i]);
+                    if (line.StartsWith("Author: "))
+                    {
+                        if (currentEntryLines.Count > 0)
+                        {
+                            entries.Add(string.Join("\n", currentEntryLines));
+                            currentEntryLines.Clear();
+                        }
+                    }
+                    currentEntryLines.Add(line);
+                }
+                if (currentEntryLines.Count > 0)
+                {
+                    entries.Add(string.Join("\n", currentEntryLines));
                 }
             }
-
             return entries;
         }
+
         public static void ProcessAndReplaceOriginalFile(string inputFilePath, bool descending)
         {
             List<string> entries = ReadEntriesFromWordFile(inputFilePath);
@@ -338,28 +346,62 @@ namespace CombineTextFilesToWord
                 mainPart.Document.Save();
             }
         }
+        private static string RemoveOrdinalSuffix(string dateString)
+        {
+            return Regex.Replace(dateString, @"(\d{1,2})(st|nd|rd|th)", "$1");
+        }
 
         private static List<string> SortEntriesByDate(List<string> entries, bool descending)
         {
-            Regex dateRegex = new Regex(@"Date:\s*(.+)\s*\n", RegexOptions.Compiled);
+            Regex dateRegex = new Regex(@"Date:\s*(.+)", RegexOptions.Compiled);
             CultureInfo cultureInfo = new CultureInfo("en-US");
+
+            // Define possible date formats
+            string[] dateFormats = new string[]
+            {
+        "dddd, MMMM d, yyyy 'at' h:mm tt",    // e.g., Sunday, September 29, 2024 at 4:01 AM
+        "dddd, MMMM d, yyyy 'at' h:mm:ss tt", // e.g., Sunday, September 29, 2024 at 4:01:05 AM
+        "ddd MMM d, yyyy h:mm tt",            // e.g., Sun Sep 29, 2024 4:01 AM (old format)
+        "ddd MMM d, yyyy h:mm:ss tt"          // e.g., Sun Sep 29, 2024 4:01:05 AM
+            };
 
             List<string> sortedEntries = entries.OrderBy(entry =>
             {
+                Console.WriteLine("Attempting to match " + entry);
                 Match dateMatch = dateRegex.Match(entry);
 
                 if (dateMatch.Success)
                 {
-                    DateTime date = DateTime.Parse(dateMatch.Groups[1].Value.Trim(), cultureInfo);
-                    return descending ? -date.Ticks : date.Ticks;
+                    string dateString = dateMatch.Groups[1].Value.Trim();
+                    dateString = RemoveOrdinalSuffix(dateString); // Remove 'st', 'nd', 'rd', 'th'
+
+                    DateTime parsedDate;
+                    bool success = DateTime.TryParseExact(
+                        dateString,
+                        dateFormats,
+                        cultureInfo,
+                        DateTimeStyles.None,
+                        out parsedDate);
+
+                    if (success)
+                    {
+                        return descending ? -parsedDate.Ticks : parsedDate.Ticks;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Could not parse date: " + dateString);
+                        return descending ? long.MaxValue : long.MinValue;
+                    }
                 }
                 else
                 {
+                    Console.WriteLine("Date not found in entry.");
                     return descending ? long.MaxValue : long.MinValue;
                 }
             }).ToList();
 
             return sortedEntries;
         }
+
     }
 }

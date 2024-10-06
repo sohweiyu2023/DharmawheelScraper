@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "dgSpecHash": "NpZHJ7ZOE3k=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\cyber\\source\\repos\\DharmawheelScraper-gpt-o1-preview\\DharmawheelScraper\\DharmawheelScraper.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\cyber\\.nuget\\packages\\anglesharp\\1.1.2\\anglesharp.1.1.2.nupkg.sha512",
+    "C:\\Users\\cyber\\.nuget\\packages\\anglesharp.io\\1.0.0\\anglesharp.io.1.0.0.nupkg.sha512",
+    "C:\\Users\\cyber\\.nuget\\packages\\flurl\\4.0.0\\flurl.4.0.0.nupkg.sha512",
+    "C:\\Users\\cyber\\.nuget\\packages\\htmlagilitypack\\1.11.66\\htmlagilitypack.1.11.66.nupkg.sha512",
+    "C:\\Users\\cyber\\.nuget\\packages\\restsharp\\112.0.0\\restsharp.112.0.0.nupkg.sha512",
+    "C:\\Users\\cyber\\.nuget\\packages\\selenium.support\\4.25.0\\selenium.support.4.25.0.nupkg.sha512",
+    "C:\\Users\\cyber\\.nuget\\packages\\selenium.webdriver\\4.25.0\\selenium.webdriver.4.25.0.nupkg.sha512",
+    "C:\\Users\\cyber\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\cyber\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512",
+    "C:\\Users\\cyber\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
+    "C:\\Users\\cyber\\.nuget\\packages\\system.text.json\\8.0.4\\system.text.json.8.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}
