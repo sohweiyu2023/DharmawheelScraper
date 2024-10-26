@@ -563,11 +563,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cyber\\source\\repos\\DharmawheelScraper-gpt-o1-preview\\DharmawheelScraper\\DharmawheelScraper.csproj",
+      "projectUniqueName": "C:\\Users\\cyber\\OneDrive\\Documents\\GitHub\\DharmawheelScraper\\DharmawheelScraper-IncludesQuotations\\DharmawheelScraper\\DharmawheelScraper.csproj",
       "projectName": "DharmawheelScraper",
-      "projectPath": "C:\\Users\\cyber\\source\\repos\\DharmawheelScraper-gpt-o1-preview\\DharmawheelScraper\\DharmawheelScraper.csproj",
+      "projectPath": "C:\\Users\\cyber\\OneDrive\\Documents\\GitHub\\DharmawheelScraper\\DharmawheelScraper-IncludesQuotations\\DharmawheelScraper\\DharmawheelScraper.csproj",
       "packagesPath": "C:\\Users\\cyber\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cyber\\source\\repos\\DharmawheelScraper-gpt-o1-preview\\DharmawheelScraper\\obj\\",
+      "outputPath": "C:\\Users\\cyber\\OneDrive\\Documents\\GitHub\\DharmawheelScraper\\DharmawheelScraper-IncludesQuotations\\DharmawheelScraper\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -651,7 +651,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

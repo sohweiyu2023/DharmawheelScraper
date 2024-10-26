@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NpZHJ7ZOE3k=",
+  "dgSpecHash": "YSIpb+TbCoU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\cyber\\source\\repos\\DharmawheelScraper-gpt-o1-preview\\DharmawheelScraper\\DharmawheelScraper.csproj",
+  "projectFilePath": "C:\\Users\\cyber\\OneDrive\\Documents\\GitHub\\DharmawheelScraper\\DharmawheelScraper-IncludesQuotations\\DharmawheelScraper\\DharmawheelScraper.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\cyber\\.nuget\\packages\\anglesharp\\1.1.2\\anglesharp.1.1.2.nupkg.sha512",
     "C:\\Users\\cyber\\.nuget\\packages\\anglesharp.io\\1.0.0\\anglesharp.io.1.0.0.nupkg.sha512",

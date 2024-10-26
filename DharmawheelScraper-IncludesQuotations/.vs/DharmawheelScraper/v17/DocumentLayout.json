@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\cyber\\source\\repos\\DharmawheelScraper-gpt-o1-preview\\",
+  "WorkspaceRootPath": "C:\\Users\\cyber\\OneDrive\\Documents\\GitHub\\DharmawheelScraper\\DharmawheelScraper-IncludesQuotations\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E9A96950-9967-40A7-BDEF-F1598994F38F}|DharmawheelScraper\\DharmawheelScraper.csproj|c:\\users\\cyber\\source\\repos\\dharmawheelscraper-gpt-o1-preview\\dharmawheelscraper\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E9A96950-9967-40A7-BDEF-F1598994F38F}|DharmawheelScraper\\DharmawheelScraper.csproj|c:\\users\\cyber\\onedrive\\documents\\github\\dharmawheelscraper\\dharmawheelscraper-includesquotations\\dharmawheelscraper\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9A96950-9967-40A7-BDEF-F1598994F38F}|DharmawheelScraper\\DharmawheelScraper.csproj|solutionrelative:dharmawheelscraper\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -23,11 +23,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\cyber\\source\\repos\\DharmawheelScraper-gpt-o1-preview\\DharmawheelScraper\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\cyber\\OneDrive\\Documents\\GitHub\\DharmawheelScraper\\DharmawheelScraper-IncludesQuotations\\DharmawheelScraper\\Program.cs",
               "RelativeDocumentMoniker": "DharmawheelScraper\\Program.cs",
-              "ToolTip": "C:\\Users\\cyber\\source\\repos\\DharmawheelScraper-gpt-o1-preview\\DharmawheelScraper\\Program.cs",
+              "ToolTip": "C:\\Users\\cyber\\OneDrive\\Documents\\GitHub\\DharmawheelScraper\\DharmawheelScraper-IncludesQuotations\\DharmawheelScraper\\Program.cs",
               "RelativeToolTip": "DharmawheelScraper\\Program.cs",
-              "ViewState": "AgIAAGMDAAAAAAAAAAA1wHMDAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOIBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2023-05-05T08:51:47.968Z",
               "IsPinned": true,
@@ -42,9 +42,9 @@
               "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\cyber\\source\\repos\\DharmawheelScraper\\DharmawheelScraper_backupWorkingBeforeScrapeLatestPosts\\Program.cs",
-              "RelativeDocumentMoniker": "..\\DharmawheelScraper\\DharmawheelScraper_backupWorkingBeforeScrapeLatestPosts\\Program.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\source\\repos\\DharmawheelScraper\\DharmawheelScraper_backupWorkingBeforeScrapeLatestPosts\\Program.cs",
               "ToolTip": "C:\\Users\\cyber\\source\\repos\\DharmawheelScraper\\DharmawheelScraper_backupWorkingBeforeScrapeLatestPosts\\Program.cs",
-              "RelativeToolTip": "..\\DharmawheelScraper\\DharmawheelScraper_backupWorkingBeforeScrapeLatestPosts\\Program.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\source\\repos\\DharmawheelScraper\\DharmawheelScraper_backupWorkingBeforeScrapeLatestPosts\\Program.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2023-05-21T04:54:40.297Z"
             }

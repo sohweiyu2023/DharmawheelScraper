@@ -577,9 +577,8 @@ namespace ConsoleApp
 
             return output.ToString().TrimEnd(); // Trim any extra newlines at the end
         }
-
         private static void ProcessNode(INode node, StringBuilder output, string currentSpeaker, string authorName,
-                                ref string lastSpeaker, ref string lastNonAuthorSpeaker)
+                        ref string lastSpeaker, ref string lastNonAuthorSpeaker)
         {
             if (node == null) return;
 
@@ -592,6 +591,7 @@ namespace ConsoleApp
 
                     if (cite != null)
                     {
+                        // Existing code to handle cite...
                         var speakerElement = cite.QuerySelector("a");
                         if (speakerElement != null)
                         {
@@ -613,8 +613,75 @@ namespace ConsoleApp
                     else
                     {
                         // Handle blockquotes without a cite
-                        // If the blockquote has class 'uncited', assume the speaker is the last non-author speaker
-                        if (element.ClassList.Contains("uncited") && !string.IsNullOrEmpty(lastNonAuthorSpeaker))
+                        // Traverse previous siblings to find punctuation
+                        bool isPunctuationBefore = false;
+                        var previousNode = element.PreviousSibling;
+                        int maxPreviousNodesToCheck = 5; // Limit traversal to prevent infinite loops
+                        int nodesChecked = 0;
+
+                        while (previousNode != null && nodesChecked < maxPreviousNodesToCheck)
+                        {
+                            nodesChecked++;
+
+                            if (previousNode.NodeType == NodeType.Text)
+                            {
+                                var text = previousNode.TextContent.TrimEnd();
+                                if (!string.IsNullOrEmpty(text))
+                                {
+                                    if (EndsWithPunctuation(text))
+                                    {
+                                        isPunctuationBefore = true;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        // Found text that doesn't end with punctuation
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (previousNode is IElement prevElement)
+                            {
+                                if (prevElement.TagName.Equals("BR", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    // Skip <br> elements
+                                }
+                                else if (IsInlineElement(prevElement))
+                                {
+                                    var text = prevElement.TextContent.TrimEnd();
+                                    if (!string.IsNullOrEmpty(text))
+                                    {
+                                        if (EndsWithPunctuation(text))
+                                        {
+                                            isPunctuationBefore = true;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            // Found text that doesn't end with punctuation
+                                            break;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    // Block-level element encountered; stop traversal
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                // Other node types (e.g., comments); skip them
+                            }
+
+                            previousNode = previousNode.PreviousSibling;
+                        }
+
+                        if (isPunctuationBefore)
+                        {
+                            speaker = currentSpeaker; // Assume the quote is from the current speaker (likely the author)
+                        }
+                        else if (!string.IsNullOrEmpty(lastNonAuthorSpeaker))
                         {
                             speaker = lastNonAuthorSpeaker;
                         }
@@ -668,6 +735,31 @@ namespace ConsoleApp
                 }
             }
         }
+
+        // Helper method to check if text ends with the specified punctuation
+        private static readonly char[] PunctuationMarks = { ':', ',', ';', '—' };
+
+        private static bool EndsWithPunctuation(string text)
+        {
+            text = text.TrimEnd();
+            if (string.IsNullOrEmpty(text))
+                return false;
+
+            return PunctuationMarks.Contains(text.Last());
+        }
+
+        // Modify IsInlineElement to include other inline elements if necessary
+        private static bool IsInlineElement(INode node)
+        {
+            if (node is IElement element)
+            {
+                string[] inlineElements = { "A", "SPAN", "EM", "STRONG", "I", "B", "U", "IMG", "CODE", "SMALL", "BIG" };
+                return inlineElements.Contains(element.TagName.ToUpper());
+            }
+            return false;
+        }
+
+
         private static void AppendTextWithSpeaker(StringBuilder output, string text, string currentSpeaker, string authorName,
                                           ref string lastSpeaker, ref string lastNonAuthorSpeaker)
         {
@@ -797,16 +889,6 @@ namespace ConsoleApp
             }
         }
 
-        // Helper method to check if an element is inline
-        private static bool IsInlineElement(INode node)
-        {
-            if (node is IElement element)
-            {
-                string[] inlineElements = { "A", "SPAN", "EM", "STRONG", "I", "B", "U", "IMG", "CODE" };
-                return inlineElements.Contains(element.TagName.ToUpper());
-            }
-            return false;
-        }
 
         // Helper method to check if an element is a block-level element
         private static bool IsBlockElement(IElement element)
