@@ -1,0 +1,42 @@
+[
+  {
+    "key": "Tiers:Free:Name",
+    "value": "Free"
+  },
+  {
+    "key": "Tiers:Free:MonthlyPrice",
+    "value": "0"
+  },
+  {
+    "key": "Tiers:Free:StandardQueryQuota",
+    "value": "500"
+  },
+  {
+    "key": "Tiers:Free:ThinkingQueryQuota",
+    "value": "20"
+  },
+  {
+    "key": "Tiers:Free:Models:0:Name",
+    "value": "gpt-4o-mini"
+  },
+  {
+    "key": "Tiers:Free:Models:0:Type",
+    "value": "standard"
+  },
+  {
+    "key": "Tiers:Free:Models:1:Name",
+    "value": "gpt-5-thinking"
+  },
+  {
+    "key": "Tiers:Free:Models:1:Type",
+    "value": "thinking"
+  },
+  {
+    "key": "Features:EnableAppInsights",
+    "value": "true"
+  },
+  {
+    "key": "Features:EnableAuditLogging",
+    "value": "true"
+  }
+]

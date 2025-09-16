@@ -1,0 +1,136 @@
+@page "/"
+
+@inject ChatClient ChatClient
+
+<PageTitle>Awakening to Reality</PageTitle>
+
+<div class="layout">
+    <section class="chat-panel">
+        <div class="document-selector">
+            <label for="document-select">Documents</label>
+            <select id="document-select" multiple @onchange="OnDocumentSelectionChanged">
+                @foreach (var document in AvailableDocuments)
+                {
+                    <option value="@document" selected> @document </option>
+                }
+            </select>
+        </div>
+
+        <div class="conversation" @ref="ConversationContainer">
+            @foreach (var entry in Conversation)
+            {
+                <div class="message @entry.Role">
+                    <div class="content">@entry.Text</div>
+                    @if (entry.Citations?.Count > 0)
+                    {
+                        <div class="citations">
+                            @foreach (var citation in entry.Citations)
+                            {
+                                <button @onclick="() => ShowCitation(citation)">[@citation.DocumentId]</button>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+
+        <EditForm Model="@Input" OnValidSubmit="SendAsync">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="composer">
+                <textarea @bind="Input.Text" placeholder="Ask about the Dharma..." />
+                <select @bind="Input.Model">
+                    @foreach (var model in Models)
+                    {
+                        <option value="@model.Name">@model.DisplayName</option>
+                    }
+                </select>
+                <button type="submit" disabled="@IsBusy">@(!IsBusy ? "Send" : "Thinking...")</button>
+            </div>
+        </EditForm>
+    </section>
+
+    <aside class="source-panel">
+        <h2>Source Viewer</h2>
+        @if (SelectedCitation is null)
+        {
+            <p>Select a citation to view the supporting passage.</p>
+        }
+        else
+        {
+            <p><strong>@SelectedCitation.DocumentId</strong> — page @SelectedCitation.Page</p>
+            <pre>@SelectedCitation.Snippet</pre>
+        }
+    </aside>
+</div>
+
+@code {
+    private readonly List<string> AvailableDocuments = new() { "All Documents" };
+    private readonly List<ConversationEntry> Conversation = new();
+    private readonly List<ModelOption> Models = new()
+    {
+        new("gpt-4o-mini", "⚡ GPT-4o Mini"),
+        new("gpt-5-thinking", "🧠 GPT-5 Thinking")
+    };
+
+    private readonly ChatInput Input = new();
+    private ElementReference ConversationContainer;
+    private bool IsBusy;
+    private Citation? SelectedCitation;
+
+    protected override void OnInitialized()
+    {
+        Input.Model = Models.First().Name;
+    }
+
+    private void OnDocumentSelectionChanged(ChangeEventArgs args)
+    {
+        // In a production implementation we would capture the selected documents from the UI.
+        // The placeholder keeps "All Documents" selected.
+        Input.DocumentIds = new List<string> { "All" };
+    }
+
+    private async Task SendAsync()
+    {
+        if (string.IsNullOrWhiteSpace(Input.Text))
+        {
+            return;
+        }
+
+        var userEntry = new ConversationEntry("user", Input.Text, null);
+        Conversation.Add(userEntry);
+
+        IsBusy = true;
+        try
+        {
+            var response = await ChatClient.SendAsync(new ChatRequest(Input.Text, Input.DocumentIds, Input.Model));
+            Conversation.Add(new ConversationEntry("assistant", response.Message, response.Citations));
+            SelectedCitation = response.Citations.FirstOrDefault();
+        }
+        finally
+        {
+            IsBusy = false;
+            Input.Text = string.Empty;
+        }
+    }
+
+    private void ShowCitation(Citation citation)
+    {
+        SelectedCitation = citation;
+    }
+
+    private sealed record ConversationEntry(string Role, string Text, IReadOnlyList<Citation>? Citations);
+
+    private sealed class ChatInput
+    {
+        [Required]
+        public string Text { get; set; } = string.Empty;
+
+        public List<string> DocumentIds { get; set; } = new() { "All" };
+
+        [Required]
+        public string Model { get; set; } = string.Empty;
+    }
+
+    private sealed record ModelOption(string Name, string DisplayName);
+}

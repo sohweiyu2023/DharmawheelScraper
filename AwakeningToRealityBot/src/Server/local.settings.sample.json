@@ -1,0 +1,14 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "AZURE_APPCONFIG_CONNECTION": "Endpoint=https://<appconfig>.azconfig.io;Id=<id>;Secret=<secret>",
+    "Storage:BlobEndpoint": "https://<storage-account>.blob.core.windows.net/",
+    "Storage:PdfContainer": "pdfs",
+    "Search:Endpoint": "https://<search-service>.search.windows.net",
+    "Search:IndexName": "atr-documents",
+    "WebPubSub:ConnectionString": "Endpoint=https://<resource>.webpubsub.azure.com;AccessKey=<key>;Version=1.0;",
+    "WebPubSub:Hub": "chat"
+  }
+}
