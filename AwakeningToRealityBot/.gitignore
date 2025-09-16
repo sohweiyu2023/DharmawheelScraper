@@ -1,0 +1,9 @@
+bin/
+obj/
+.vs/
+**/local.settings.json
+**/*.user
+**/*.swp
+**/appsettings.Development.json
+PublishProfiles/
+node_modules/
